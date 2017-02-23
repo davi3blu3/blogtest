@@ -23,12 +23,13 @@ MongoClient.connect(localdb, function(err, db) {
         console.log('Express server listening on port', port);
     });
 
-    app.get('/api/posts', function(req, res) {
+    app.get('/posts', function(req, res) {
         db.collection('posts').find({}).toArray(function(err, docs) {
             if (err) {
                 console.log('GET error:', err);
                 res.status(500).send(err);
             } else {
+                console.log('GET request received!');
                 res.status(200).json(docs);
             }
         });
