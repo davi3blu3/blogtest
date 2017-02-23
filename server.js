@@ -13,7 +13,7 @@ var localdb = 'mongodb://localhost:27017/testblog';
 
 MongoClient.connect(localdb, function(err, db) {
     if (err) {
-        console.log('Error:', err);
+        console.log('Mongo Connect error:', err);
         process.exit(1);
     }
 
@@ -22,19 +22,30 @@ MongoClient.connect(localdb, function(err, db) {
         console.log('Express server listening on port', port);
     });
 
-    var newPost = {
-        "message": "This is the first blog post, hello blargz!",
-        "name": "davi3blue",
-        "createdOn": new Date()
-    };
+    app.get('/api/posts', function(req, res) {
+        db.collection('posts').find({}).toArray(function(err, docs) {
+            if (err) {
+                console.log('GET error:', err);
+                res.status(500).send(err);
+            } else {
+                res.status(200).json(docs);
+            }
+        });
+    });
 
-    db.collection('posts').insertOne(newPost, function(err, doc) {
-        if (err) {
-            console.log('Error:', err);
-        } else {
-            console.log(doc.ops[0]);
-        }
-    })
+    // var newPost = {
+    //     "message": "This is the next blog post, we did it!",
+    //     "name": "zombieLeia",
+    //     "createdOn": new Date()
+    // };
+
+    // db.collection('posts').insertOne(newPost, function(err, doc) {
+    //     if (err) {
+    //         console.log('Error:', err);
+    //     } else {
+    //         console.log(doc.ops[0]);
+    //     }
+    // })
 
 
 });
