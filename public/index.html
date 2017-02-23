@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body ng-app"myApp">
+
+<h1>Express working, yo</h1>
+
+<div ng-controller="MyController">
+    <div>
+        <h2>{{ vm.title }}</h2>
+        <p>This is the post message yay!</p>
+        <h5>5th of November</h5>
+    </div>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+<script type="text/javascript">
+    angular.module('myApp', []).controller('MyController', MyController);
+    console.log('script tag working');
+    function MyController($scope, $http){
+
+        $http.get("/posts").then(function(response) {
+            $scope.posts = response.data;
+            console.log('get sent');
+        })
+    }
+
+</script>
+</body>
+</html>
