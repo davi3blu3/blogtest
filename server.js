@@ -5,8 +5,9 @@ var mongodb = require('mongodb');
 
 var ObjectID = mongodb.ObjectID;
 var MongoClient = mongodb.MongoClient;
-var app = express();
 
+var app = express();
+app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 var localdb = 'mongodb://localhost:27017/testblog';
 
