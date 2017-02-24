@@ -63,7 +63,7 @@ MongoClient.connect(localdb, function(err, db) {
     })
 
     /*
-     *  PUT REQUEST: Update existing post
+     *  PUT REQUEST: Update existing post - ****************** NOT WORKING YET ******************
      */
 
     app.put('/posts/:id', function(req, res) {
@@ -80,6 +80,18 @@ MongoClient.connect(localdb, function(err, db) {
          })
      })
 
+    /*
+     *  DELETE REQUEST: Delete existing post - ****************** NOT WORKING YET ******************
+     */
 
+     app.delete("/posts/:id", function(req, res) {
+        db.collection('posts').deleteOne({_id: new ObjectID(req.params.id)}, function(err, result) {
+            if (err) {
+                console.log( "Failed to delete post." );
+            } else {
+                res.status(204).end()
+            }
+        })
+    });
 });
 
