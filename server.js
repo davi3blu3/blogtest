@@ -23,6 +23,10 @@ MongoClient.connect(localdb, function(err, db) {
         console.log('Express server listening on port', port);
     });
 
+    /*
+     *  GET REQUEST: Retreive all posts
+     */
+
     app.get('/posts', function(req, res) {
         db.collection('posts').find({}).toArray(function(err, docs) {
             if (err) {
@@ -35,19 +39,31 @@ MongoClient.connect(localdb, function(err, db) {
         });
     });
 
-    // var newPost = {
-    //     "message": "This is the next blog post, we did it!",
-    //     "name": "zombieLeia",
-    //     "createdOn": new Date()
-    // };
+    /*
+     *  POST REQUEST: Save a new post
+     */
 
-    // db.collection('posts').insertOne(newPost, function(err, doc) {
-    //     if (err) {
-    //         console.log('Error:', err);
-    //     } else {
-    //         console.log(doc.ops[0]);
-    //     }
-    // })
+    app.post('/posts', function(req, res) {
+        
+        var newPost = {
+            "message": req.body.message,
+            "name": req.body.name,
+            "createdOn": new Date()
+        };
+
+        db.collection('posts').insertOne(newPost, function(err, doc) {
+            if (err) {
+                console.log('Error:', err);
+            } else {
+                console.log(doc.ops[0]);
+                res.status(200).send(doc.ops[0]);
+            }
+        })
+    })
+
+
+
+
 
 
 });
