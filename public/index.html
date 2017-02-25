@@ -3,24 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Shout Into The Void</title>
+    <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-
+<div class="modal_background"></div>
 <header>
     <h1>Shout Into The Void</h1>
     <button>POST</button>
 </header>
 
-
-<div ng-controller="MyController">
-    <div ng-repeat="post in posts">
-        <h3>{{ post.name }}</h3>
+<section ng-controller="MyController" class="post_feed">
+    <div ng-repeat="post in posts" class="post">
+        <h2 class="post_username">{{ post.name }}</h2>
+        <button ng-click="handleDelete(post._id)" class="post_delete_btn">DELETE</button>
+        <button ng-click="handleEdit(post._id)" class="post_edit_btn">EDIT</button>
         <p>{{ post.message }}</p>
         <h5>{{ post.createdOn }}</h5>
-        <button ng-click="handleDelete(post._id)">DELETE</button>
     </div>
 
-</div>
+    
+
+</section>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js" type="text/javascript"></script>
 <script src="scripts/app.js" type="text/javascript">
