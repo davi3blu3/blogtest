@@ -45,7 +45,7 @@ MongoClient.connect(localdb, function(err, db) {
      */
 
     app.post('/posts', function(req, res) {
-        console.log('POST request received!');
+        
         var newPost = {
             "message": req.body.message,
             "name": req.body.name,
@@ -56,6 +56,7 @@ MongoClient.connect(localdb, function(err, db) {
             if (err) {
                 console.log('Error:', err);
             } else {
+                console.log('POST request received!');
                 console.log(doc.ops[0]);
                 res.status(200).send(doc.ops[0]);
             }
@@ -63,19 +64,23 @@ MongoClient.connect(localdb, function(err, db) {
     })
 
     /*
-     *  PUT REQUEST: Update existing post - ****************** NOT WORKING YET ******************
+     *  PUT REQUEST: Update existing post
      */
 
     app.put('/posts/:id', function(req, res) {
 
         var updateDoc = req.body;
-        // delete updateDoc._id;
+        delete updateDoc._id;
+        updateDoc.updatedOn = new Date();
+
 
          db.collection('posts').updateOne({_id: new ObjectID(req.params.id)}, updateDoc, function(err, doc) {
              if (err) {
                  console.log('Error:', err);
              } else {
-                 res.status(204).send(doc.ops[0]);
+                 console.log('PUT request received!');
+                 console.log(doc.results);
+                 res.status(204).send(doc.results);
              }
          })
      })
@@ -89,6 +94,7 @@ MongoClient.connect(localdb, function(err, db) {
             if (err) {
                 console.log( "Failed to delete post." );
             } else {
+                console.log('DELETE request received!');
                 res.status(204).end()
             }
         })
