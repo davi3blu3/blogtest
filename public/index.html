@@ -22,9 +22,6 @@
     angular.module('myApp', []).controller('MyController', MyController);
     
     function MyController($scope, $http){
-        console.log('controller was called');
-
-        $scope.title = "Working, MoFo";
 
         $http.get("/posts").then(function(response) {
             $scope.posts = response.data;
