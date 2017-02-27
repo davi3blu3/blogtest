@@ -49,6 +49,8 @@ mongodb.MongoClient.connect(localdb, function(err, db) {
 
     // POST REQUEST: Save a new post
     app.post('/posts', function(req, res) {
+
+        console.log(req.body);
         
         var newPost = {
             "message": req.body.message,

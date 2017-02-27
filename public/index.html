@@ -8,20 +8,23 @@
 <body ng-controller="MyController">
 
 <div class="modal_background">
-    <form class="post">
+    <form ng-submit="submit()" class="post">
         <fieldset>
             <legend>Compost New Post</legend>
             <button ng-click="toggleModal()">Close</button>
             <div class="input-item">
                 <label for="input-name">Your Name</label>
-                <input type="text" placeholder="Jeremiah Bullfrog">
+                <input type="text" ng-model="formData.name" placeholder="Jeremiah Bullfrog">
             </div>
             <div class="input-item">
                 <label for="input-message">Message</label>
-                <input type="text" placeholder="Shout into the void!">
+                <input type="text" ng-model="formData.message" placeholder="Shout into the void!">
             </div>
-            <button>Submit</button>
+            <input type="submit" value="Submit">
         </fieldset>
+        <pre>
+            {{ formData }}
+        </pre>
     </form>
 </div>
 
