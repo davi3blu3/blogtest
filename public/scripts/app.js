@@ -8,7 +8,14 @@ function MyController($scope, $http){
         console.log($scope.posts);
     })
 
-    // handles click event of delete button
+    // handles click event - Post Button
+    $scope.handleNewPost = function() {
+        console.log("POST clicked");
+        var modal = document.querySelector('.modal_background');
+        modal.style.display = "block";
+    }
+
+    // handles click event - Delete Button
     $scope.handleDelete = function(postID) {
         
         // Send DELETE request for specified post

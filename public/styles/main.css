@@ -1,8 +1,26 @@
+html {
+    min-height: 100%;
+    position: relative;
+}
+
 body {
     margin: 0;
     padding: 0;
+    height: 100%;
     background-color: darkgrey;
 }
+
+.modal_background {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    background-color: rgba(45,45,45,.7);
+    display: none;
+}
+
 
 header {
     background-color: cadetblue;
@@ -47,11 +65,3 @@ section .post_feed {
     right: 12px;
 }
 
-.modal_background {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    z-index: 999;
-    background-color: rgba(0,0,55,.4);
-    display: none;
-}

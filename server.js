@@ -19,6 +19,7 @@ app.use(bodyParser.json());
 
 // connect to database
 mongodb.MongoClient.connect(localdb, function(err, db) {
+    // handle db connect error
     if (err) {
         console.log('Mongo Connect error:', err);
         process.exit(1);
@@ -30,7 +31,7 @@ mongodb.MongoClient.connect(localdb, function(err, db) {
         console.log('Express server listening on port', port);
     });
 
-    // generic error handler
+    // generic error handler - http requests
     function errorHandler(err) {
         console.log('ERROR:', err);
         res.status(500).send(err);        

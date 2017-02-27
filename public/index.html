@@ -5,14 +5,16 @@
     <title>Shout Into The Void</title>
     <link rel="stylesheet" href="styles/main.css">
 </head>
-<body>
+<body ng-controller="MyController">
+
 <div class="modal_background"></div>
+
 <header>
     <h1>Shout Into The Void</h1>
-    <button>POST</button>
+    <button ng-click="handleNewPost()">POST</button>
 </header>
 
-<section ng-controller="MyController" class="post_feed">
+<section class="post_feed">
     <div ng-repeat="post in posts" class="post">
         <h2 class="post_username">{{ post.name }}</h2>
         <button ng-click="handleDelete(post._id)" class="post_delete_btn">DELETE</button>
