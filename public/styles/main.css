@@ -53,5 +53,5 @@ section .post_feed {
     position: absolute;
     z-index: 999;
     background-color: rgba(0,0,55,.4);
-    display: block;
+    display: none;
 }
