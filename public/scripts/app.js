@@ -1,6 +1,6 @@
 angular.module('myApp', []).controller('MyController', MyController);
 
-function MyController($scope, $http){
+function MyController($scope, $http, $window){
 
     // Send GET request for all posts, send to view scope
     $http.get('/posts').then(function(response) {
@@ -8,7 +8,30 @@ function MyController($scope, $http){
         console.log($scope.posts);
     })
 
-    // handles click event of delete button
+    // handles click event - Post Button & Close New Post Button
+    $scope.toggleModal = function() {
+        var modal = document.querySelector('.modal_background');
+        modal.style.display = (modal.style.display == "block") ? "none" : "block";
+    }
+
+    // empty object to hold form data from new post
+    $scope.formData = {};
+
+    // handles new post Submit event
+    $scope.submit = function() {
+        // console.log($scope.formData);
+
+        // send POST request with new post
+        $http.post('/posts', $scope.formData).then(function(response){
+
+            // reload page on success
+            if (response.status > 199 && response.status < 300) {
+                $window.location.reload();
+            }
+        })
+    }
+
+    // handles click event - Delete Button
     $scope.handleDelete = function(postID) {
         
         // Send DELETE request for specified post
