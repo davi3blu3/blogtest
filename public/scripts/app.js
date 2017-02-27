@@ -8,11 +8,10 @@ function MyController($scope, $http){
         console.log($scope.posts);
     })
 
-    // handles click event - Post Button
-    $scope.handleNewPost = function() {
-        console.log("POST clicked");
+    // handles click event - Post Button & Close New Post Button
+    $scope.toggleModal = function() {
         var modal = document.querySelector('.modal_background');
-        modal.style.display = "block";
+        modal.style.display = (modal.style.display == "block") ? "none" : "block";
     }
 
     // handles click event - Delete Button
