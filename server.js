@@ -10,11 +10,11 @@ var ObjectID = mongodb.ObjectID;
 var localdb = 'mongodb://localhost:27017/testblog';
 
 // setup middleware
-app.use(express.static(__dirname + '/public'));
 app.use(function(req, res, next) {
     console.log(req.method, req.url);
     next();
-})
+});
+app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 
 // connect to database
