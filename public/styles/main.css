@@ -7,18 +7,15 @@ body {
     height: 100%;
 }
 
-
-.modal_background {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 999;
-    display: block;
-}
 */
 
-/*.modal {
-    display: block;
-}*/
+section.spacer {
+    height: 70px;
+}
+
+.modal-header {
+    background-image: -webkit-linear-gradient(#fff, #eee 50%, #e4e4e4);
+    background-image: -o-linear-gradient(#fff, #eee 50%, #e4e4e4);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), color-stop(50%, #eee), to(#e4e4e4));
+    background-image: linear-gradient(#fff, #eee 50%, #e4e4e4);
+}
