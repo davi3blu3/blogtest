@@ -1,14 +1,12 @@
-html {
+/*html {
     min-height: 100%;
     position: relative;
 }
 
 body {
-    margin: 0;
-    padding: 0;
     height: 100%;
-    background-color: darkgrey;
 }
+
 
 .modal_background {
     position: absolute;
@@ -17,51 +15,10 @@ body {
     left: 0;
     right: 0;
     z-index: 999;
-    background-color: rgba(45,45,45,.7);
-    display: none;
+    display: block;
 }
+*/
 
-
-header {
-    background-color: cadetblue;
-    width: 100%;
-    display: inline-block;
-}
-
-header h1 {
-    float: left;
-    margin-left: 16px;
-}
-
-header button {
-    margin-top: 18px;
-    margin-right: 16px;
-    padding: 8px;
-    float: right;
-    font-size: 22px;
-}
-
-section .post_feed {
-    align-content: center;
-}
-
-.post {
-    position: relative;
-    margin: 20px auto 0 auto;
-    padding: 10px 15px;
-    width: 85%;
-    background-color: whitesmoke;
-}
-
-.post_delete_btn {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-}
-
-.post_edit_btn {
-    position: absolute;
-    top: 36px;
-    right: 12px;
-}
-
+/*.modal {
+    display: block;
+}*/
