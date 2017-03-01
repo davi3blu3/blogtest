@@ -10,7 +10,7 @@ function MyController($scope, $http, $window){
 
     // handles click event - Post Button & Close New Post Button
     $scope.toggleModal = function() {
-        var modal = document.querySelector('.modal_background');
+        var modal = document.querySelector('.modal');
         modal.style.display = (modal.style.display == "block") ? "none" : "block";
     }
 

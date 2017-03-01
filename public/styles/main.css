@@ -1,67 +1,63 @@
-html {
-    min-height: 100%;
-    position: relative;
-}
-
 body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    background-color: darkgrey;
+    background-color: lightslategrey;
 }
 
-.modal_background {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 999;
-    background-color: rgba(45,45,45,.7);
-    display: none;
+.post_feed {
+    margin-top: 75px;
 }
 
-
-header {
-    background-color: cadetblue;
-    width: 100%;
-    display: inline-block;
+.modal-header {
+    background-image: -webkit-linear-gradient(#6d94bf, #446e9b 50%, #3e648d);
+    background-image: -o-linear-gradient(#6d94bf, #446e9b 50%, #3e648d);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#6d94bf), color-stop(50%, #446e9b), to(#3e648d));
+    background-image: linear-gradient(#6d94bf, #446e9b 50%, #3e648d);
 }
 
-header h1 {
-    float: left;
-    margin-left: 16px;
+.modal-header h3 {
+    color: #dddddd;
 }
 
-header button {
-    margin-top: 18px;
-    margin-right: 16px;
-    padding: 8px;
-    float: right;
-    font-size: 22px;
+.hover-primary:hover {
+    background-image: -webkit-linear-gradient(#6d94bf, #446e9b 50%, #3e648d);
+    background-image: -o-linear-gradient(#6d94bf, #446e9b 50%, #3e648d);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#6d94bf), color-stop(50%, #446e9b), to(#3e648d));
+    background-image: linear-gradient(#6d94bf, #446e9b 50%, #3e648d);
 }
 
-section .post_feed {
-    align-content: center;
+.hover-warning:hover {
+    background-image: -webkit-linear-gradient(#ff9c21, #d47500 50%, #c06a00);
+    background-image: -o-linear-gradient(#ff9c21, #d47500 50%, #c06a00);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#ff9c21), color-stop(50%, #d47500), to(#c06a00));
+    background-image: linear-gradient(#ff9c21, #d47500 50%, #c06a00);
+}
+
+.hover-danger:hover {
+    background-image: -webkit-linear-gradient(#ff1d1b, #cd0200 50%, #b90200);
+    background-image: -o-linear-gradient(#ff1d1b, #cd0200 50%, #b90200);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#ff1d1b), color-stop(50%, #cd0200), to(#b90200));
+    background-image: linear-gradient(#ff1d1b, #cd0200 50%, #b90200);
 }
 
 .post {
-    position: relative;
-    margin: 20px auto 0 auto;
-    padding: 10px 15px;
-    width: 85%;
-    background-color: whitesmoke;
+    background-image: -webkit-linear-gradient(#fff, #ddd 50%, #a1a1a1);
+    background-image: -o-linear-gradient(#fff, #ddd 50%, #a1a1a1);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), color-stop(50%, #ddd), to(#a1a1a1));
+    background-image: linear-gradient(#fff, #ddd 50%, #a1a1a1);
 }
 
-.post_delete_btn {
-    position: absolute;
-    top: 12px;
-    right: 12px;
+.button-top-marg {
+    margin-top: 6px;
 }
 
-.post_edit_btn {
-    position: absolute;
-    top: 36px;
-    right: 12px;
+.post-name {
+    font-weight: 600;
 }
 
+.post-message {
+    margin: 25px;
+    font-size: 1.3em;
+}
+
+.post-date {
+    
+}
