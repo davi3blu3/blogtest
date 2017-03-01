@@ -43,40 +43,25 @@
 </div>
 
 
-<!--<div class="modal_background">
-    <form ng-submit="submit()" class="post">
-        <fieldset>
-            <legend>Compost New Post</legend>
-            <button ng-click="toggleModal()">Close</button>
-            <div class="input-item">
-                <label for="input-name">Your Name</label>
-                <input type="text" ng-model="formData.name" placeholder="Jeremiah Bullfrog">
+<section class="post_feed container">
+    <div ng-repeat="post in posts" class="panel panel-primary">
+
+        <div class="panel-body">
+
+            <h3>{{ post.name }}</h3>
+
+            <p>{{ post.message }}</p>
+
+            <div class="pull-left">
+                <h5>{{ post.createdOn }}</h5>
             </div>
-            <div class="input-item">
-                <label for="input-message">Message</label>
-                <input type="text" ng-model="formData.message" placeholder="Shout into the void!">
-            </div>
-            <input type="submit" value="Submit">
-        </fieldset>
-        <pre>
-            {{ formData }}
-        </pre>
-    </form>
-</div>-->
 
-
-
-<section class="post_feed">
-    <div ng-repeat="post in posts" class="post">
-        <h3 class="post_username">{{ post.name }}</h3>
-        <button ng-click="handleDelete(post._id)" class="post_delete_btn">DELETE</button>
-        <button ng-click="handleEdit(post._id)" class="post_edit_btn">EDIT</button>
-        <p>{{ post.message }}</p>
-        <h5>{{ post.createdOn }}</h5>
+            <div class="pull-right">
+                <button ng-click="handleDelete(post._id)" class="post_delete_btn">DELETE</button>
+                <button ng-click="handleEdit(post._id)" class="post_edit_btn">EDIT</button>  
+            </div>      
+        </div>
     </div>
-
-    
-
 </section>
 
 
