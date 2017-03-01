@@ -3,7 +3,7 @@ body {
 }
 
 .post_feed {
-    margin-top: 90px;
+    margin-top: 75px;
 }
 
 .modal-header {
@@ -39,12 +39,25 @@ body {
 }
 
 .post {
-    background-image: -webkit-linear-gradient(#fff, #eee 50%, #e4e4e4);
-    background-image: -o-linear-gradient(#fff, #eee 50%, #e4e4e4);
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), color-stop(50%, #eee), to(#e4e4e4));
-    background-image: linear-gradient(#fff, #eee 50%, #e4e4e4);
+    background-image: -webkit-linear-gradient(#fff, #ddd 50%, #a1a1a1);
+    background-image: -o-linear-gradient(#fff, #ddd 50%, #a1a1a1);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), color-stop(50%, #ddd), to(#a1a1a1));
+    background-image: linear-gradient(#fff, #ddd 50%, #a1a1a1);
 }
 
 .button-top-marg {
     margin-top: 6px;
+}
+
+.post-name {
+    font-weight: 600;
+}
+
+.post-message {
+    margin: 25px;
+    font-size: 1.3em;
+}
+
+.post-date {
+    
 }
