@@ -26,7 +26,12 @@ function MyController($scope, $http, $window){
 
             // reload page on success
             if (response.status > 199 && response.status < 300) {
-                $window.location.reload();
+                $http.get('/posts').then(function(response) {
+                    $scope.posts = response.data;
+                    console.log($scope.posts);
+                })
+                $scope.toggleModal();
+                // TO DO: delete form data
             }
         })
     }
