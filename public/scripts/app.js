@@ -8,13 +8,12 @@ function MyController($scope, $http, $window){
 
         // turn createdOn into readable string
         $scope.posts.forEach(function(post) {
-            var testDate = new Date().setDate(post.createdOn);
-            console.log(testDate);
-            // var testDate = Date.parse(post.createdOn);
-            
-            // var readable = (testDate.toDateString() == newDate().toDateString())
-            //     ? post.createdOn.toLocaleTimeString()
-            //     : post.createdOn.toLocaleDateString();
+            var dateObj = new Date(post.createdOn);
+            // console.log(dateObj);
+            var readable = (dateObj.toDateString() == new Date().toDateString())
+                ? dateObj.toLocaleTimeString()
+                : dateObj.toLocaleDateString();
+            post.date = readable;
         })
 
         // convert date object to readable string
