@@ -5,6 +5,28 @@ function MyController($scope, $http, $window){
     // Send GET request for all posts, send to view scope
     $http.get('/posts').then(function(response) {
         $scope.posts = response.data;
+
+        // turn createdOn into readable string
+        $scope.posts.forEach(function(post) {
+            var testDate = new Date().setDate(post.createdOn);
+            console.log(testDate);
+            // var testDate = Date.parse(post.createdOn);
+            
+            // var readable = (testDate.toDateString() == newDate().toDateString())
+            //     ? post.createdOn.toLocaleTimeString()
+            //     : post.createdOn.toLocaleDateString();
+        })
+
+        // convert date object to readable string
+        // docs.forEach(function(doc) {
+        //     var testDate = doc.createdOn;
+        //     var readable = (testDate.toDateString() == new Date().toDateString())
+        //         ? doc.createdOn.toLocaleTimeString()
+        //         : doc.createdOn.toLocaleDateString();
+        //     doc.createdOn = readable;
+        //     console.log(doc.createdOn);
+        // }, this);
+
         console.log($scope.posts);
     })
 
