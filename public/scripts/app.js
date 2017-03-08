@@ -2,32 +2,24 @@ angular.module('myApp', []).controller('MyController', MyController);
 
 function MyController($scope, $http, $window){
 
-    // Send GET request for all posts, send to view scope
-    $http.get('/posts').then(function(response) {
-        $scope.posts = response.data;
+    $scope.loadData = function() {
+        // Send GET request for all posts, send to view scope
+        $http.get('/posts').then(function(response) {
+            $scope.posts = response.data;
 
-        // turn createdOn into readable string
-        $scope.posts.forEach(function(post) {
-            var dateObj = new Date(post.createdOn);
-            // console.log(dateObj);
-            var readable = (dateObj.toDateString() == new Date().toDateString())
-                ? dateObj.toLocaleTimeString()
-                : dateObj.toLocaleDateString();
-            post.date = readable;
+            // add readable date to post objects
+            $scope.posts.forEach(function(post) {
+                // convert JSON back to date object
+                var dateObj = new Date(post.createdOn);
+                // convert date to readable date string, or time string if today
+                var readable = (dateObj.toDateString() == new Date().toDateString())
+                    ? dateObj.toLocaleTimeString()
+                    : dateObj.toLocaleDateString();
+                post.date = readable;
+            })
         })
-
-        // convert date object to readable string
-        // docs.forEach(function(doc) {
-        //     var testDate = doc.createdOn;
-        //     var readable = (testDate.toDateString() == new Date().toDateString())
-        //         ? doc.createdOn.toLocaleTimeString()
-        //         : doc.createdOn.toLocaleDateString();
-        //     doc.createdOn = readable;
-        //     console.log(doc.createdOn);
-        // }, this);
-
-        console.log($scope.posts);
-    })
+    }
+    $scope.loadData();
 
     // handles click event - Post Button & Close New Post Button
     $scope.toggleModal = function() {
@@ -45,12 +37,9 @@ function MyController($scope, $http, $window){
         // send POST request with new post
         $http.post('/posts', $scope.formData).then(function(response){
 
-            // reload page on success
+            // reload data on success
             if (response.status > 199 && response.status < 300) {
-                $http.get('/posts').then(function(response) {
-                    $scope.posts = response.data;
-                    console.log($scope.posts);
-                })
+                $scope.loadData();
                 $scope.toggleModal();
                 // TO DO: delete form data
             }
