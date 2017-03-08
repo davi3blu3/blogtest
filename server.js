@@ -39,9 +39,9 @@ mongodb.MongoClient.connect(localdb, function(err, db) {
 
     // GET REQUEST: Retreive all posts
     app.get('/posts', function(req, res) {
-        db.collection('posts').find({}).toArray(function(err, docs) {
+        db.collection('posts').find({}).sort({ createdOn: -1 }).toArray(function(err, docs) { // sort by time within query?
             if (err) errorHandler(err);
-            else {
+            else {                
                 res.status(200).json(docs);
             }
         });
