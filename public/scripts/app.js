@@ -19,11 +19,13 @@ function MyController($scope, $http, $window){
             })
         })
     }
+    // Initial function call on page load
     $scope.loadData();
 
+
     // handles click event - Post Button & Close New Post Button
-    $scope.toggleModal = function() {
-        var modal = document.querySelector('.modal');
+    $scope.togglePostModal = function() {
+        var modal = document.querySelector('.post-modal');
         modal.style.display = (modal.style.display == "block") ? "none" : "block";
     }
 
@@ -40,11 +42,14 @@ function MyController($scope, $http, $window){
             // reload data on success
             if (response.status > 199 && response.status < 300) {
                 $scope.loadData();
-                $scope.toggleModal();
+                console.log('post successful, triggering modal close');
+                $scope.togglePostModal();
                 // TO DO: delete form data
             }
         })
     }
+
+    
 
     // handles click event - Delete Button
     $scope.handleDelete = function(postID) {

@@ -15,7 +15,7 @@
         </div>
 
         <div class="nav navbar-nav navbar-right button-top-marg">
-            <button class="btn btn-default hover-primary" ng-click="toggleModal()">POST</button>
+            <button class="btn btn-default hover-primary" ng-click="togglePostModal()">POST</button>
         </div>
 
     </div>
@@ -23,7 +23,7 @@
 
 <!--<section class="spacer"></section>-->
 
-<div class="modal">
+<div class="modal post-modal">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -38,7 +38,7 @@
                     <label class="control-label" for="input-message">Message</label>
                     <input class="form-control" type="text" ng-model="formData.message" placeholder="Shout into the void!">
                 </div>
-                <button type="button" class="btn btn-default" ng-click="toggleModal()">Close</button>
+                <button type="button" class="btn btn-default" ng-click="togglePostModal()">Close</button>
                 <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
