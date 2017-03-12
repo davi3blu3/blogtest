@@ -17,7 +17,7 @@ function config($routeProvider){
     })
 }
 
-function MyController($scope, $http, $window){
+function MyController($scope, $http, $window, $location){
 
     $scope.loadData = function() {
         // Send GET request for all posts, send to view scope
@@ -63,12 +63,11 @@ function MyController($scope, $http, $window){
         // send POST request with new post
         $http.post('/posts', $scope.postData).then(function(response){
 
-            // reload data on success
+            // reload data on success, clear form, return to feed
             if (response.status > 199 && response.status < 300) {
-                $scope.loadData();
-                console.log('post successful, triggering modal close');
-                $scope.toggleModal();
-                // TO DO: delete form data
+                $scope.loadData();             
+                $scope.postData = {};
+                $location.url('/');
             }
         })
     }
