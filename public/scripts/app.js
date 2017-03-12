@@ -1,4 +1,5 @@
-angular.module('myApp', []).controller('MyController', MyController);
+angular.module('myApp', [])
+    .controller('MyController', MyController);
 
 function MyController($scope, $http, $window){
 
@@ -24,32 +25,46 @@ function MyController($scope, $http, $window){
 
 
     // handles click event - Post Button & Close New Post Button
-    $scope.togglePostModal = function() {
-        var modal = document.querySelector('.post-modal');
+    $scope.toggleModal = function() {
+        var modal = document.querySelector('.modal');
         modal.style.display = (modal.style.display == "block") ? "none" : "block";
     }
 
-    // empty object to hold form data from new post
-    $scope.formData = {};
+    // handles click event - Edit Button & Close Edit Post Button
+    // $scope.toggleEditModal = function(postID) {
+    //     var editModal = document.querySelector('.post-modal');
+    //     editModal.style.display = (editModal.style.display == "block") ? "none" : "block";
+    // }
+
+    // empty object to hold form data from new post and edit post
+    $scope.postData = {};
+    $scope.editData = {};
 
     // handles new post Submit event
     $scope.submit = function() {
-        // console.log($scope.formData);
+        // console.log($scope.postData);
 
         // send POST request with new post
-        $http.post('/posts', $scope.formData).then(function(response){
+        $http.post('/posts', $scope.postData).then(function(response){
 
             // reload data on success
             if (response.status > 199 && response.status < 300) {
                 $scope.loadData();
                 console.log('post successful, triggering modal close');
-                $scope.togglePostModal();
+                $scope.toggleModal();
                 // TO DO: delete form data
             }
         })
     }
 
-    
+    // handles click event - Edit Button
+    $scope.handleEdit = function(postID) {
+        // test click working
+        console.log('edit clicked for post:', postID);
+
+        // toggle edit modal with correct post information
+        $scope.toggleEditModal();
+    }
 
     // handles click event - Delete Button
     $scope.handleDelete = function(postID) {
