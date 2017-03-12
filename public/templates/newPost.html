@@ -1,0 +1,21 @@
+<div class="template-container container">
+    <div class="panel panel-primary">
+    <div class="post action-panel">
+
+        <h3><strong>Create A New Post</strong></h3>
+
+        <form ng-submit="submit()" class="clearfix">
+            <div class="form-group">
+                <label class="control-label" for="input-name">Your Name</label>
+                <input class="form-control" type="text" ng-model="postData.name" placeholder="Yes, You!">
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="input-message">Message</label>
+                <input class="form-control" type="text" ng-model="postData.message" placeholder="Shout into the void!">
+            </div>
+            <button type="submit" value="Submit" class="btn btn-primary pull-right">Submit</button>
+        </form>
+
+    </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="template-container container">
+    <div ng-repeat="post in posts" class="panel panel-primary">
+
+        <div class="panel-body post">
+
+            <h4 class="post-name">{{ post.name }}</h4>
+
+            <p class="post-message">{{ post.message }}</p>
+
+            <div class="pull-left">
+                <h5 class="post-date">{{ post.date }}</h5>
+            </div>
+
+            <div class="pull-right">
+                <button ng-click="handleEdit(post._id)" class="btn btn-default hover-warning">EDIT</button> 
+                <button ng-click="handleDelete(post._id)" class="btn btn-default hover-danger">DELETE</button>
+ 
+            </div>      
+        </div>
+    </div>
+</div>

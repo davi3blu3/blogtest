@@ -1,6 +1,23 @@
-angular.module('myApp', []).controller('MyController', MyController);
+angular.module('myApp', ['ngRoute'])
+    .config(config)
+    .controller('MyController', MyController);
 
-function MyController($scope, $http, $window){
+function config($routeProvider){
+    $routeProvider.when('/', {
+        templateUrl: '../templates/feed.html'
+    })
+    .when('/newPost', {
+        templateUrl: '../templates/newPost.html'
+    })
+    .when('/editPost', {
+        templateUrl: '../templates/editPost.html'
+    })
+    .when('/deletePost', {
+        templateUrl: '../templates/deletePost.html'
+    })
+}
+
+function MyController($scope, $http, $window, $location){
 
     $scope.loadData = function() {
         // Send GET request for all posts, send to view scope
@@ -24,32 +41,45 @@ function MyController($scope, $http, $window){
 
 
     // handles click event - Post Button & Close New Post Button
-    $scope.togglePostModal = function() {
-        var modal = document.querySelector('.post-modal');
+    $scope.toggleModal = function() {
+        var modal = document.querySelector('.modal');
         modal.style.display = (modal.style.display == "block") ? "none" : "block";
     }
 
-    // empty object to hold form data from new post
-    $scope.formData = {};
+    // handles click event - Edit Button & Close Edit Post Button
+    // $scope.toggleEditModal = function(postID) {
+    //     var editModal = document.querySelector('.post-modal');
+    //     editModal.style.display = (editModal.style.display == "block") ? "none" : "block";
+    // }
+
+    // empty object to hold form data from new post and edit post
+    $scope.postData = {};
+    $scope.editData = {};
 
     // handles new post Submit event
     $scope.submit = function() {
-        // console.log($scope.formData);
+        // console.log($scope.postData);
 
         // send POST request with new post
-        $http.post('/posts', $scope.formData).then(function(response){
+        $http.post('/posts', $scope.postData).then(function(response){
 
-            // reload data on success
+            // reload data on success, clear form, return to feed
             if (response.status > 199 && response.status < 300) {
-                $scope.loadData();
-                console.log('post successful, triggering modal close');
-                $scope.togglePostModal();
-                // TO DO: delete form data
+                $scope.loadData();             
+                $scope.postData = {};
+                $location.url('/');
             }
         })
     }
 
-    
+    // handles click event - Edit Button
+    $scope.handleEdit = function(postID) {
+        // test click working
+        console.log('edit clicked for post:', postID);
+
+        // toggle edit modal with correct post information
+        $scope.toggleEditModal();
+    }
 
     // handles click event - Delete Button
     $scope.handleDelete = function(postID) {
