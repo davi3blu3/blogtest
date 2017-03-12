@@ -1,5 +1,21 @@
-angular.module('myApp', [])
+angular.module('myApp', ['ngRoute'])
+    .config(config)
     .controller('MyController', MyController);
+
+function config($routeProvider){
+    $routeProvider.when('/', {
+        templateUrl: '../templates/feed.html'
+    })
+    .when('/newPost', {
+        templateUrl: '../templates/newPost.html'
+    })
+    .when('/editPost', {
+        templateUrl: '../templates/editPost.html'
+    })
+    .when('/deletePost', {
+        templateUrl: '../templates/deletePost.html'
+    })
+}
 
 function MyController($scope, $http, $window){
 
