@@ -8,25 +8,19 @@ var bcrypt = require('bcrypt');
 // database specific dependencies, methods, and path
 var mongodb = require('mongodb');
 var ObjectID = mongodb.ObjectID;
-var localdb = 'mongodb://localhost:27017/testblog';
 var mongoose = require('mongoose');
-
-// setup middleware
-app.use(function(req, res, next) {
-    console.log(req.method, req.url);
-    next();
-});
-app.use(express.static(__dirname + '/public'));
-app.use(bodyParser.json());
 
 // connect to database
 var db = require('./app/data/dbconnection.js');
 
-// handle db connect error
-// if (err) {
-//     console.log('Mongo Connect error:', err);
-//     process.exit(1);
-// }
+// setup middleware
+app.set('port', 3000);
+app.use(function(req, res, next) {
+    console.log(req.method, req.url);
+    next();
+});
+app.use(express.static(path.join(__dirname + '/public')));
+app.use(bodyParser.json());
 
 // start server
 var server = app.listen('3000', function() {
