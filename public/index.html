@@ -15,6 +15,11 @@
         </div>
 
         <div class="nav navbar-nav navbar-right button-top-marg">
+            <!-- should be visible when unauthenticated -->
+            <a href="#/register"><button class="btn btn-default hover-primary">REGISTER</button></a>
+            <a href="#/login"><button class="btn btn-default hover-primary">LOG IN</button></a>
+
+            <!-- should be visible when authenticated -->
             <a href="#/newPost"><button class="btn btn-default hover-primary">NEW POST</button></a>
             <a href="#/editPost"><button class="btn btn-default hover-primary">EDIT POST</button></a>
             <a href="#/deletePost"><button class="btn btn-default hover-primary">DELETE POST</button></a>
@@ -33,7 +38,12 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js" type="text/javascript"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.min.js" type="text/javascript"></script>
 <script src="scripts/app.js" type="text/javascript"></script>
-<script src="scripts/controller.js" type="text/javascript"></script>
+
+<!--angular controllers-->
+<script src="scripts/controllers/main-ctrl.js" type="text/javascript"></script>
+<script src="scripts/controllers/edit-ctrl.js" type="text/javascript"></script>
+<script src="scripts/controllers/register-ctrl.js" type="text/javascript"></script>
+<script src="scripts/controllers/login-ctrl.js" type="text/javascript"></script>
 
 
 </script>

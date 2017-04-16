@@ -6,11 +6,19 @@ angular.module('myApp', ['ngRoute'])
     $routeProvider
     .when('/', {
         templateUrl: '../templates/feed.html',
-        controller: 'MyController'
+        controller: 'MainController'
+    })
+    .when('/register', {
+        templateUrl: '../templates/register.html',
+        controller: 'RegisterController'
+    })
+    .when('/login', {
+        templateUrl: '../templates/login.html',
+        controller: 'LoginController'
     })
     .when('/newPost', {
         templateUrl: '../templates/newPost.html',
-        controller: 'MyController'
+        controller: 'MainController'
     })
     .when('/editPost/', {
         templateUrl: '../templates/editPost.html',
@@ -18,6 +26,6 @@ angular.module('myApp', ['ngRoute'])
     })
     .when('/deletePost', {
         templateUrl: '../templates/deletePost.html',
-        controller: 'MyController'
+        controller: 'MainController'
     })
 })

@@ -1,0 +1,29 @@
+<div class="template-container container">
+    <div class="panel panel-primary">
+    <div class="post action-panel">
+
+        <h3><strong>Log In</strong></h3>
+
+        <form ng-submit="login()" class="clearfix">
+            <div class="form-group">
+                <label class="control-label" for="input-name">Username</label>
+                <input class="form-control"
+                       type="text"
+                       ng-model="loginUsername"
+                       placeholder="Username"
+                       required>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="input-message">Password</label>
+                <input class="form-control"
+                       type="text"
+                       ng-model="loginPassword"
+                       placeholder="Password"
+                       required>
+            </div>
+            <button type="submit" value="Submit" class="btn btn-primary pull-right">Submit</button>
+        </form>
+
+    </div>
+    </div>
+</div>
