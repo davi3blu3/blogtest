@@ -3,11 +3,13 @@ var express = require('express');
 var app = express();
 var path = require('path');
 var bodyParser = require('body-parser');
+var bcrypt = require('bcrypt');
 
 // database specific dependencies, methods, and path
 var mongodb = require('mongodb');
 var ObjectID = mongodb.ObjectID;
 var localdb = 'mongodb://localhost:27017/testblog';
+var mongoose = require('mongoose');
 
 // setup middleware
 app.use(function(req, res, next) {
@@ -36,6 +38,10 @@ mongodb.MongoClient.connect(localdb, function(err, db) {
         console.log('ERROR:', err);
         res.status(500).send(err);        
     }
+
+    /*
+     *   API ROUTES : POSTS
+     */
 
     // GET REQUEST: Retreive all posts
     app.get('/posts', function(req, res) {
@@ -66,44 +72,6 @@ mongodb.MongoClient.connect(localdb, function(err, db) {
         })
     })
 
-    // POST REQUEST: Register new user
-    app.post('/newuser', function(req, res) {
-        console.log('post request received');
-
-        var newUser = {
-            "username": req.body.username,
-            "password": req.body.password,
-        };
-
-        console.log(newUser);
-
-        db.collection('users').insertOne(newUser, function(err, user) {
-            if (err) errorHandler(err);
-            else {
-                res.status(200).json(user);
-            }
-        })
-    })
-
-    // POST REQUEST: Login returning user
-    app.post('/loginuser', function(req, res) {
-        console.log('post request received');
-
-        var User = {
-            "username": req.body.username,
-            "password": req.body.password,
-        };
-
-        console.log(User);
-
-        // db.collection('users').insertOne(newUser, function(err, user) {
-        //     if (err) errorHandler(err);
-        //     else {
-        //         res.status(200).json(user);
-        //     }
-        // })
-    })    
-
     // PUT REQUEST: Update existing post
     app.put('/posts/:id', function(req, res) {
 
@@ -129,4 +97,60 @@ mongodb.MongoClient.connect(localdb, function(err, db) {
             }
         })
     });
+
+    /*
+     *   API ROUTES : USERS
+     */
+    
+    require('./app/models/user.model');
+    var User = mongoose.model('User');
+
+    // POST REQUEST: Register new user
+    app.post('/newuser', function(req, res) {
+        console.log('post request received');
+        var username = req.body.username;
+        var password = req.body.password;
+
+        User.create({
+            "username": username,
+            "password": bcrypt.hash(password, bcrypt.genSaltSync(10))
+        }, function(err, newUser){
+            if (err) {
+                console.log(err);
+                res.status(400).json(err);
+            } else {
+                console.log(newUser);
+
+                // // add new user to db
+                // db.collection('users').insertOne(newUser, function(err, user) {
+                //     if (err) errorHandler(err);
+                //     else {
+                //         res.status(200).json(user);
+                //     }
+                // })
+
+                res.status(200).json(newUser);
+            }
+        });
+    })
+
+    // POST REQUEST: Login returning user
+    app.post('/loginuser', function(req, res) {
+        console.log('post request received');
+
+        var User = {
+            "username": req.body.username,
+            "password": req.body.password,
+        };
+
+        console.log(User);
+
+        // db.collection('users').insertOne(newUser, function(err, user) {
+        //     if (err) errorHandler(err);
+        //     else {
+        //         res.status(200).json(user);
+        //     }
+        // })
+    })    
 });
+
