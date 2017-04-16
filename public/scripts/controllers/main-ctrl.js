@@ -1,9 +1,5 @@
 angular.module('myApp')
-    .controller('MyController', MyController)
-    .controller('EditController', EditController);
-
-
-function MyController($scope, $http, $window, $location){
+    .controller('MainController', function MainController($scope, $http, $window, $location){
 
     $scope.loadData = function() {
         // Send GET request for all posts, send to view scope
@@ -70,11 +66,4 @@ function MyController($scope, $http, $window, $location){
             }
         })
     }
-}
-
-function EditController($routeParams){
-    // empty object to hold form data from edit post
-    // $scope.editData = {};
-
-    console.log('Params', $routeParams.id);
-}
+});

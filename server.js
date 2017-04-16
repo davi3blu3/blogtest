@@ -66,6 +66,24 @@ mongodb.MongoClient.connect(localdb, function(err, db) {
         })
     })
 
+    // POST REQUEST: Register new user
+    app.post('/newuser', function(req, res) {
+        
+        var newUser = {
+            "username": req.body.username,
+            "password": req.body.password,
+        };
+
+        console.log(newUser);
+
+        // db.collection('posts').insertOne(newPost, function(err, doc) {
+        //     if (err) errorHandler(err);
+        //     else {
+        //         res.status(200).send();
+        //     }
+        // })
+    })
+
     // PUT REQUEST: Update existing post
     app.put('/posts/:id', function(req, res) {
 
