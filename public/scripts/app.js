@@ -10,7 +10,7 @@ angular.module('myApp', ['ngRoute'])
     })
     .when('/register', {
         templateUrl: '../templates/register.html',
-        controller: 'MainController'
+        controller: 'RegisterController'
     })
     .when('/login', {
         templateUrl: '../templates/login.html',
