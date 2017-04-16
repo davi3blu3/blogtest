@@ -68,7 +68,8 @@ mongodb.MongoClient.connect(localdb, function(err, db) {
 
     // POST REQUEST: Register new user
     app.post('/newuser', function(req, res) {
-        
+        console.log('post request received');
+
         var newUser = {
             "username": req.body.username,
             "password": req.body.password,
@@ -76,12 +77,12 @@ mongodb.MongoClient.connect(localdb, function(err, db) {
 
         console.log(newUser);
 
-        // db.collection('posts').insertOne(newPost, function(err, doc) {
-        //     if (err) errorHandler(err);
-        //     else {
-        //         res.status(200).send();
-        //     }
-        // })
+        db.collection('users').insertOne(newUser, function(err, user) {
+            if (err) errorHandler(err);
+            else {
+                res.status(200).json(user);
+            }
+        })
     })
 
     // PUT REQUEST: Update existing post

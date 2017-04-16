@@ -1,12 +1,20 @@
 angular.module('myApp')
-    .controller('RegisterController', function RegisterController($scope){
-    // empty object to hold form data from edit post
-    // $scope.editData = {};
+    .controller('RegisterController', function RegisterController($scope, $http){
 
     $scope.register = function(){
-        console.log('Register submit button pressed');
-        console.log('username:', $scope.regUsername);
-        console.log('password:', $scope.regPassword);
+
+        // create user object
+        var user = {
+            username: $scope.regUsername,
+            password: $scope.regPassword
+        };
+
+        // post request
+        $http.post('/newuser', user)
+            .then(function(response) {
+                console.log(response);
+        })
+
 
         // clear form
         $scope.regUsername = '';
