@@ -93,11 +93,10 @@ app.put('/posts/:id', function(req, res) {
     })
 });
 
-/*
+    /*
     *   API ROUTES : USERS
     */
 
-require('./app/models/user.model');
 var User = mongoose.model('User');
 
 // POST REQUEST: Register new user
