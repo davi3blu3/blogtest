@@ -14,7 +14,7 @@ angular.module('myApp', ['ngRoute'])
     })
     .when('/login', {
         templateUrl: '../templates/login.html',
-        controller: 'MainController'
+        controller: 'LoginController'
     })
     .when('/newPost', {
         templateUrl: '../templates/newPost.html',
