@@ -85,6 +85,25 @@ mongodb.MongoClient.connect(localdb, function(err, db) {
         })
     })
 
+    // POST REQUEST: Login returning user
+    app.post('/loginuser', function(req, res) {
+        console.log('post request received');
+
+        var User = {
+            "username": req.body.username,
+            "password": req.body.password,
+        };
+
+        console.log(User);
+
+        // db.collection('users').insertOne(newUser, function(err, user) {
+        //     if (err) errorHandler(err);
+        //     else {
+        //         res.status(200).json(user);
+        //     }
+        // })
+    })    
+
     // PUT REQUEST: Update existing post
     app.put('/posts/:id', function(req, res) {
 
