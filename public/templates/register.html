@@ -1,0 +1,29 @@
+<div class="template-container container">
+    <div class="panel panel-primary">
+    <div class="post action-panel">
+
+        <h3><strong>Register</strong></h3>
+
+        <form ng-submit="submit()" class="clearfix">
+            <div class="form-group">
+                <label class="control-label" for="input-name">Create a Username</label>
+                <input class="form-control"
+                       type="text"
+                       ng-model="postData.username"
+                       placeholder="Username"
+                       required>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="input-message">Create a Password</label>
+                <input class="form-control"
+                       type="text"
+                       ng-model="postData.password"
+                       placeholder="Password"
+                       required>
+            </div>
+            <button type="submit" value="Submit" class="btn btn-primary pull-right">Submit</button>
+        </form>
+
+    </div>
+    </div>
+</div>

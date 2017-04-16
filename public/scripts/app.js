@@ -8,6 +8,10 @@ angular.module('myApp', ['ngRoute'])
         templateUrl: '../templates/feed.html',
         controller: 'MyController'
     })
+    .when('/register', {
+        templateUrl: '../templates/register.html',
+        controller: 'MyController'
+    })
     .when('/newPost', {
         templateUrl: '../templates/newPost.html',
         controller: 'MyController'
