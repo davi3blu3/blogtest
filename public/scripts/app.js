@@ -12,6 +12,10 @@ angular.module('myApp', ['ngRoute'])
         templateUrl: '../templates/register.html',
         controller: 'MyController'
     })
+    .when('/login', {
+        templateUrl: '../templates/login.html',
+        controller: 'MyController'
+    })
     .when('/newPost', {
         templateUrl: '../templates/newPost.html',
         controller: 'MyController'
