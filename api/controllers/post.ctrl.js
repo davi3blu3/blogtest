@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-
 var db = require('../data/dbconnection.js');
 var Post = mongoose.model('Post');
 
@@ -22,17 +21,20 @@ module.exports.postsGetAll = function(req, res){
 }
 
 module.exports.insertNewPost = function(req, res){
+    console.log('insertNewPost called');
     var newPost = {
         "message": req.body.message,
         "name": req.body.name,
         "createdOn": new Date()
     };
-    db.collection('posts').insertOne(newPost, function(err, doc) {
-        if (err) errorHandler(err);
-        else {
-            res.status(200).send();
-        }
-    })    
+    console.log(newPost);
+    Post.insertOne(newPost)
+        .exec(function(err, post) {
+            if (err) errorHandler(err);
+            else {
+                res.status(200).send(post);
+            }
+        })
 }
 
 module.exports.getOnePost = function(req, res){
@@ -70,3 +72,12 @@ module.exports.deleteOnePost = function(req, res){
         }
     })  
 }
+
+// API STRUCTURE
+// /posts GET              - retrieve all posts in decending date order
+// /posts POST             - insert a new post into db
+
+// /posts/:postId GET      - retrieve one post
+// /posts/:postId POST     - add comment to one post
+// /posts/:postId PUT      - edit one post
+// /posts/:postId DELETE   - delete one post
