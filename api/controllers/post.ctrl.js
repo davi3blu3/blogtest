@@ -10,20 +10,11 @@ function errorHandler(err) {
 }
 
 module.exports.postsGetAll = function(req, res){
-
-    // db.collection('posts').find({}).sort({ createdOn: -1 }).toArray(function(err, docs) {
-    //     if (err) errorHandler(err);
-    //     else {                
-    //         res.status(200).json(docs);
-    //     }
-    // });
-
-    Post
-        .find()
+    Post.find()
+        .sort({ createdOn: -1 })
         .exec(function(err, posts){
             console.log('Found posts: ', posts.length);
-            res
-                .json(posts);
+            res.status(200).json(posts);
         });
 }
 
