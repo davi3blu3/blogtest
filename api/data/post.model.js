@@ -1,10 +1,13 @@
 var mongoose = require('mongoose');
 
 var postSchema = new mongoose.Schema({
-    username: String,
+    username: {
+        type: String,
+        required: true
+    },
     content: {
         type: String,
-        maxlength: 440,
+        maxlength: 480,
         required: true
     },
     postDate: {
@@ -19,7 +22,7 @@ var postSchema = new mongoose.Schema({
     comments: [{
         content: {
             type: String,
-            maxlength: 360
+            maxlength: 240
         },
         author: String,
         commentDate: Date
