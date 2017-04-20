@@ -31,41 +31,6 @@ var server = app.listen('3000', function() {
 });
 
 
-
-/*
-    *   API ROUTES : POSTS
-    */
-
-
-
-
-
-// PUT REQUEST: Update existing post
-app.put('/posts/:id', function(req, res) {
-
-    var updateDoc = req.body;
-    delete updateDoc._id;
-    updateDoc.updatedOn = new Date();
-
-
-        db.collection('posts').updateOne({_id: new ObjectID(req.params.id)}, updateDoc, function(err, doc) {
-            if (err) errorHandler(err);
-            else {
-                res.status(204).send();
-            }
-        })
-    })
-
-// DELETE REQUEST: Delete existing post
-    app.delete("/posts/:id", function(req, res) {
-    db.collection('posts').deleteOne({_id: new ObjectID(req.params.id)}, function(err, result) {
-        if (err) errorHandler(err);
-        else {
-            res.status(204).send()
-        }
-    })
-});
-
     /*
     *   API ROUTES : USERS
     */

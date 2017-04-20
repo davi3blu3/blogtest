@@ -1,3 +1,11 @@
+var db = require('../data/dbconnection.js');
+
+// generic error handler - http requests
+function errorHandler(err) {
+    console.log('ERROR:', err);
+    res.status(500).send(err);        
+}
+
 module.exports.postsGetAll = function(req, res){
     console.log('GET received to route index');
     res
@@ -23,4 +31,26 @@ module.exports.insertNewPost = function(req, res){
             res.status(200).send();
         }
     })    
+}
+
+module.exports.updateOnePost = function(req, res){
+    var updateDoc = req.body;
+    delete updateDoc._id;
+    updateDoc.updatedOn = new Date();
+
+    db.collection('posts').updateOne({_id: new ObjectID(req.params.id)}, updateDoc, function(err, doc) {
+        if (err) errorHandler(err);
+        else {
+            res.status(204).send();
+        }
+    })
+}
+
+module.exports.deleteOnePost = function(req, res){
+    db.collection('posts').deleteOne({_id: new ObjectID(req.params.id)}, function(err, result) {
+        if (err) errorHandler(err);
+        else {
+            res.status(204).send()
+        }
+    })  
 }
