@@ -33,12 +33,18 @@ module.exports.insertNewPost = function(req, res){
     })    
 }
 
+module.exports.getOnePost = function(req, res){
+    var postId = req.params.postId;
+    // get post
+}
+
 module.exports.updateOnePost = function(req, res){
+    var postId = req.params.postId;
     var updateDoc = req.body;
     delete updateDoc._id;
     updateDoc.updatedOn = new Date();
 
-    db.collection('posts').updateOne({_id: new ObjectID(req.params.id)}, updateDoc, function(err, doc) {
+    db.collection('posts').updateOne({_id: new ObjectID(postId)}, updateDoc, function(err, doc) {
         if (err) errorHandler(err);
         else {
             res.status(204).send();
@@ -47,7 +53,8 @@ module.exports.updateOnePost = function(req, res){
 }
 
 module.exports.deleteOnePost = function(req, res){
-    db.collection('posts').deleteOne({_id: new ObjectID(req.params.id)}, function(err, result) {
+    var postId = req.params.postId;
+    db.collection('posts').deleteOne({_id: new ObjectID(postId)}, function(err, result) {
         if (err) errorHandler(err);
         else {
             res.status(204).send()

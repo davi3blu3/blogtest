@@ -8,7 +8,8 @@ router
     .post(ctrlPosts.insertNewPost);
 
 router
-    .route('/posts/:id')
+    .route('/posts/:postId')
+    .get(ctrlPosts.getOnePost)
     .put(ctrlPosts.updateOnePost)
     .delete(ctrlPost.deleteOnePost);    
 
