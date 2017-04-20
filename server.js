@@ -4,6 +4,7 @@ var app = express();
 var path = require('path');
 var bodyParser = require('body-parser');
 var bcrypt = require('bcrypt');
+var routes = require('./routes');
 
 // database specific dependencies, methods, and path
 var mongodb = require('mongodb');
@@ -20,6 +21,7 @@ app.use(function(req, res, next) {
     next();
 });
 app.use(express.static(path.join(__dirname + '/public')));
+app.use('/api', routes);
 app.use(bodyParser.json());
 
 // start server
@@ -28,44 +30,15 @@ var server = app.listen('3000', function() {
     console.log('Express server listening on port', port);
 });
 
-// generic error handler - http requests
-function errorHandler(err) {
-    console.log('ERROR:', err);
-    res.status(500).send(err);        
-}
+
 
 /*
     *   API ROUTES : POSTS
     */
 
-// GET REQUEST: Retreive all posts
-app.get('/posts', function(req, res) {
-    db.collection('posts').find({}).sort({ createdOn: -1 }).toArray(function(err, docs) { // sort by time within query?
-        if (err) errorHandler(err);
-        else {                
-            res.status(200).json(docs);
-        }
-    });
-});
 
-// POST REQUEST: Save a new post
-app.post('/posts', function(req, res) {
 
-    console.log(req.body);
-    
-    var newPost = {
-        "message": req.body.message,
-        "name": req.body.name,
-        "createdOn": new Date()
-    };
 
-    db.collection('posts').insertOne(newPost, function(err, doc) {
-        if (err) errorHandler(err);
-        else {
-            res.status(200).send();
-        }
-    })
-})
 
 // PUT REQUEST: Update existing post
 app.put('/posts/:id', function(req, res) {
