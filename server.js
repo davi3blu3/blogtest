@@ -4,7 +4,7 @@ var app = express();
 var path = require('path');
 var bodyParser = require('body-parser');
 var bcrypt = require('bcrypt');
-var routes = require('./routes');
+var routes = require('./api/routes');
 
 // database specific dependencies, methods, and path
 var mongodb = require('mongodb');
@@ -12,7 +12,7 @@ var ObjectID = mongodb.ObjectID;
 var mongoose = require('mongoose');
 
 // connect to database
-var db = require('./app/data/dbconnection.js');
+var db = require('./api/data/dbconnection.js');
 
 // setup middleware
 app.set('port', 3000);
@@ -21,7 +21,7 @@ app.use(function(req, res, next) {
     next();
 });
 app.use(express.static(path.join(__dirname + '/public')));
-app.use('/api', routes);
+app.use('/', routes);
 app.use(bodyParser.json());
 
 // start server

@@ -3,7 +3,7 @@ angular.module('myApp')
 
     $scope.loadData = function() {
         // Send GET request for all posts, send to view scope
-        $http.get('/api/posts').then(function(response) {
+        $http.get('/posts').then(function(response) {
             $scope.posts = response.data;
 
             // add readable date to post objects
