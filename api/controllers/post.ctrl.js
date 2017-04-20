@@ -13,8 +13,11 @@ module.exports.postsGetAll = function(req, res){
     Post.find()
         .sort({ createdOn: -1 })
         .exec(function(err, posts){
-            console.log('Found posts: ', posts.length);
-            res.status(200).json(posts);
+            if (err) errorHandler(err);
+            else {
+                console.log('Found posts: ', posts.length);
+                res.status(200).json(posts);
+            }
         });
 }
 
@@ -34,7 +37,14 @@ module.exports.insertNewPost = function(req, res){
 
 module.exports.getOnePost = function(req, res){
     var postId = req.params.postId;
-    // get post
+    Post.findById(postId)
+        .exec(function(err, post){
+            if (err) errorHandler(err);
+            else {
+                console.log('Found post: ', post);
+                res.status(200).json(post);
+            }
+        })
 }
 
 module.exports.updateOnePost = function(req, res){
