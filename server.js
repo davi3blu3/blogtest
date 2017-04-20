@@ -38,20 +38,20 @@ var server = app.listen('3000', function() {
 var User = mongoose.model('User');
 
 // POST REQUEST: Register new user
-app.post('/newuser', function(req, res) {
-    console.log('post request received');
-    var username = req.body.username;
-    var password = req.body.password;
+// app.post('/newuser', function(req, res) {
+//     console.log('post request received');
+//     var username = req.body.username;
+//     var password = req.body.password;
 
-    User.create({
-        "username": username,
-        "password": bcrypt.hash(password, bcrypt.genSaltSync(10))
-    }, function(err, newUser){
-        if (err) {
-            console.log(err);
-            res.status(400).json(err);
-        } else {
-            console.log(newUser);
+//     User.create({
+//         "username": username,
+//         "password": bcrypt.hash(password, bcrypt.genSaltSync(10))
+//     }, function(err, newUser){
+//         if (err) {
+//             console.log(err);
+//             res.status(400).json(err);
+//         } else {
+//             console.log(newUser);
 
             // // add new user to db
             // db.collection('users').insertOne(newUser, function(err, user) {
@@ -61,21 +61,21 @@ app.post('/newuser', function(req, res) {
             //     }
             // })
 
-            res.status(200).json(newUser);
-        }
-    });
-})
+//             res.status(200).json(newUser);
+//         }
+//     });
+// })
 
 // POST REQUEST: Login returning user
-app.post('/loginuser', function(req, res) {
-    console.log('post request received');
+// app.post('/loginuser', function(req, res) {
+//     console.log('post request received');
 
-    var User = {
-        "username": req.body.username,
-        "password": req.body.password,
-    };
+//     var User = {
+//         "username": req.body.username,
+//         "password": req.body.password,
+//     };
 
-    console.log(User);
+    // console.log(User);
 
     // db.collection('users').insertOne(newUser, function(err, user) {
     //     if (err) errorHandler(err);
@@ -83,6 +83,6 @@ app.post('/loginuser', function(req, res) {
     //         res.status(200).json(user);
     //     }
     // })
-})    
+// })    
 
 

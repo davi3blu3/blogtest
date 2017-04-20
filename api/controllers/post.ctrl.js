@@ -1,4 +1,7 @@
+var mongoose = require('mongoose');
+
 var db = require('../data/dbconnection.js');
+var Post = mongoose.model('Post');
 
 // generic error handler - http requests
 function errorHandler(err) {
@@ -7,16 +10,21 @@ function errorHandler(err) {
 }
 
 module.exports.postsGetAll = function(req, res){
-    console.log('GET received to route index');
-    res
-        .status(200)
-        .json({"accessedRoutes": true});
+
     // db.collection('posts').find({}).sort({ createdOn: -1 }).toArray(function(err, docs) {
     //     if (err) errorHandler(err);
     //     else {                
     //         res.status(200).json(docs);
     //     }
     // });
+
+    Post
+        .find()
+        .exec(function(err, posts){
+            console.log('Found posts: ', posts.length);
+            res
+                .json(posts);
+        });
 }
 
 module.exports.insertNewPost = function(req, res){
