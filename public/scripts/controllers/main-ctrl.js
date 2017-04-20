@@ -21,26 +21,6 @@ angular.module('myApp')
     // Initial function call on page load
     $scope.loadData();
 
-
-    // empty object to hold form data from new post
-    $scope.postData = {};
-
-    // handles new post Submit event
-    $scope.submit = function() {
-        // console.log($scope.postData);
-
-        // send POST request with new post
-        $http.post('/posts', $scope.postData).then(function(response){
-
-            // reload data on success, clear form, return to feed
-            if (response.status > 199 && response.status < 300) {
-                $scope.loadData();             
-                $scope.postData = {};
-                $location.url('/');
-            }
-        })
-    }
-
     // handles click event - Edit Button
     $scope.handleEdit = function(postID) {
         // test click working

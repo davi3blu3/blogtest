@@ -18,7 +18,7 @@ angular.module('myApp', ['ngRoute'])
     })
     .when('/newPost', {
         templateUrl: '../templates/newPost.html',
-        controller: 'MainController'
+        controller: 'PostController'
     })
     .when('/editPost/', {
         templateUrl: '../templates/editPost.html',
