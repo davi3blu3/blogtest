@@ -22,21 +22,19 @@ module.exports.postsGetAll = function(req, res){
 
 module.exports.insertNewPost = function(req, res){
     console.log('insertNewPost called');
-    console.log(req.body);
-    res.status(200).send();
-    // var newPost = {
-    //     "message": req.body.message,
-    //     "name": req.body.name,
-    //     "createdOn": new Date()
-    // };
-    // console.log(newPost);
-    // Post.insertOne(newPost)
-    //     .exec(function(err, post) {
-    //         if (err) errorHandler(err);
-    //         else {
-    //             res.status(200).send(post);
-    //         }
-    //     })
+
+    var newPost = {
+        "message": req.body.message,
+        "username": req.body.name,
+        "createdOn": new Date()
+    };
+    console.log(newPost);
+    Post.create(newPost, function(err, post) {
+            if (err) errorHandler(err);
+            else {
+                res.status(200).send(post);
+            }
+        })
 }
 
 module.exports.getOnePost = function(req, res){

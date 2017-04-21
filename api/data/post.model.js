@@ -5,7 +5,7 @@ var postSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    content: {
+    message: {
         type: String,
         maxlength: 480,
         required: true
