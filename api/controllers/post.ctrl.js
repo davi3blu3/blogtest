@@ -8,6 +8,7 @@ function errorHandler(err) {
     res.status(500).send(err);        
 }
 
+// GET /posts - retrieve all posts in decending date order
 module.exports.postsGetAll = function(req, res){
     Post.find()
         .sort({ createdOn: -1 })
@@ -20,6 +21,7 @@ module.exports.postsGetAll = function(req, res){
         });
 }
 
+// POST /posts - write a new post to database
 module.exports.insertNewPost = function(req, res){
     console.log('insertNewPost called');
 
@@ -37,6 +39,7 @@ module.exports.insertNewPost = function(req, res){
         })
 }
 
+// GET /posts/:postId - retrieve single post
 module.exports.getOnePost = function(req, res){
     var postId = req.params.postId;
     Post.findById(postId)

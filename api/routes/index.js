@@ -4,12 +4,12 @@ var ctrlPosts = require('../controllers/post.ctrl.js');
 
 router
     .route('/posts')
-    .get(ctrlPosts.postsGetAll) // testing ... working
-    .post(ctrlPosts.insertNewPost); // testing ...
+    .get(ctrlPosts.postsGetAll)     // testing ... working
+    .post(ctrlPosts.insertNewPost); // testing ... working
 
 router // is this line neccessary?
     .route('/posts/:postId')
-    .get(ctrlPosts.getOnePost)
+    .get(ctrlPosts.getOnePost)      // testing ... working
     .put(ctrlPosts.updateOnePost)
     .delete(ctrlPosts.deleteOnePost);    
 
