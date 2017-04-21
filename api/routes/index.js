@@ -5,21 +5,21 @@ var ctrlUsers = require('../controllers/user.ctrl.js');
 
 router
     .route('/posts')
-    .get(ctrlPosts.postsGetAll)
-    .post(ctrlPosts.insertNewPost);
+    .get(ctrlPosts.postsGetAll)         // get all posts
+    .post(ctrlPosts.insertNewPost);     // submit new post
 
 router
     .route('/posts/:postId')
-    .get(ctrlPosts.getOnePost)
-    .put(ctrlPosts.updateOnePost)
-    .delete(ctrlPosts.deleteOnePost);
+    .get(ctrlPosts.getOnePost)          // get one post
+    .put(ctrlPosts.updateOnePost)       // update one post
+    .delete(ctrlPosts.deleteOnePost);   // delete one post
 
 router
     .route('/newuser')
-    .post(ctrlUsers.register);
+    .post(ctrlUsers.register);          // register new user
 
 router
     .route('/login')
-    .post(ctrlUsers.login);
+    .post(ctrlUsers.login);             // login existing user
 
 module.exports = router;
