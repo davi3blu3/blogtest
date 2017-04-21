@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var ctrlPosts = require('../controllers/post.ctrl.js');
+var ctrlUsers = require('../controllers/user.ctrl.js');
 
 router
     .route('/posts')
@@ -12,5 +13,13 @@ router
     .get(ctrlPosts.getOnePost)
     .put(ctrlPosts.updateOnePost)
     .delete(ctrlPosts.deleteOnePost);
+
+router
+    .route('/newuser')
+    .post(ctrlUsers.register);
+
+router
+    .route('/login')
+    .post(ctrlUsers.login);
 
 module.exports = router;
