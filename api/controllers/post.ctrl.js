@@ -89,3 +89,6 @@ module.exports.deleteOnePost = function(req, res){
 // /posts/:postId POST     - add comment to one post
 // /posts/:postId PUT      - edit one post
 // /posts/:postId DELETE   - delete one post
+
+// /newuser POST           - register a new user
+// /login   POST           - authenticate existing user
