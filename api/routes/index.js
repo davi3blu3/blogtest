@@ -7,10 +7,10 @@ router
     .get(ctrlPosts.postsGetAll)
     .post(ctrlPosts.insertNewPost);
 
-router // is this line neccessary?
+router
     .route('/posts/:postId')
     .get(ctrlPosts.getOnePost)
     .put(ctrlPosts.updateOnePost)
-    .delete(ctrlPosts.deleteOnePost);    
+    .delete(ctrlPosts.deleteOnePost);
 
 module.exports = router;
