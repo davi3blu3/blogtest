@@ -52,18 +52,20 @@ module.exports.getOnePost = function(req, res){
         })
 }
 
+// PUT /posts/:postId - update a single post
 module.exports.updateOnePost = function(req, res){
     var postId = req.params.postId;
-    var updateDoc = req.body;
-    delete updateDoc._id;
-    updateDoc.updatedOn = new Date();
+    var update = { $set: { message: req.body.message }};
+    var options = { new: true };
 
-    db.collection('posts').updateOne({_id: new ObjectID(postId)}, updateDoc, function(err, doc) {
+    Post.findByIdAndUpdate(postId, update, options, function(err, newPost){
         if (err) errorHandler(err);
         else {
-            res.status(204).send();
-        }
-    })
+            console.log('else condition met, sending response');
+            console.log(newPost);
+            res.status(202).json(newPost);
+        }        
+    });
 }
 
 module.exports.deleteOnePost = function(req, res){

@@ -10,7 +10,7 @@ router
 router // is this line neccessary?
     .route('/posts/:postId')
     .get(ctrlPosts.getOnePost)      // testing ... working
-    .put(ctrlPosts.updateOnePost)
+    .put(ctrlPosts.updateOnePost)   // testing ... working
     .delete(ctrlPosts.deleteOnePost);    
 
 module.exports = router;
