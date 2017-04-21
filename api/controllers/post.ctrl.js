@@ -63,19 +63,22 @@ module.exports.updateOnePost = function(req, res){
         else {
             console.log('else condition met, sending response');
             console.log(newPost);
-            res.status(202).json(newPost);
+            res.status(200).json(newPost);
         }        
     });
 }
 
+// DELETE /posts/:postID - delete a single post
 module.exports.deleteOnePost = function(req, res){
     var postId = req.params.postId;
-    db.collection('posts').deleteOne({_id: new ObjectID(postId)}, function(err, result) {
+
+    Post.findByIdAndRemove(postId, {}, function(err){
         if (err) errorHandler(err);
         else {
-            res.status(204).send()
+            res.status(204).send();
         }
-    })  
+    });
+
 }
 
 // API STRUCTURE
