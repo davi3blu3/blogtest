@@ -10,7 +10,7 @@ var postSchema = new mongoose.Schema({
         maxlength: 480,
         required: true
     },
-    postDate: {
+    createdOn: {
         type: Date,
         required: true
     },

@@ -4,8 +4,8 @@ var ctrlPosts = require('../controllers/post.ctrl.js');
 
 router
     .route('/posts')
-    .get(ctrlPosts.postsGetAll)
-    .post(ctrlPosts.insertNewPost);
+    .get(ctrlPosts.postsGetAll) // testing ... working
+    .post(ctrlPosts.insertNewPost); // testing ...
 
 router // is this line neccessary?
     .route('/posts/:postId')

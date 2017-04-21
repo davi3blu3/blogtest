@@ -15,8 +15,9 @@ app.use(function(req, res, next) {
     next();
 });
 app.use(express.static(path.join(__dirname + '/public')));
-app.use('/', routes);
 app.use(bodyParser.json());
+app.use('/sitv', routes);
+
 
 // start server
 var server = app.listen('3000', function() {
