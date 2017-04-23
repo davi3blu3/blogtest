@@ -34,7 +34,7 @@ angular.module('myApp')
     $scope.handleDelete = function(postID) {
         
         // Send DELETE request for specified post
-        $http.delete('/posts/' + postID).then(function(response){
+        $http.delete('/sitv/posts/' + postID).then(function(response){
             console.log(response.status);
 
             // remove deleted row from view
