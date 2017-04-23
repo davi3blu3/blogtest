@@ -10,7 +10,7 @@ angular.module('myApp')
         };
 
         // post request
-        $http.post('/newuser', user)
+        $http.post('/sitv/newuser', user)
             .then(function(response) {
                 console.log(response);
         })

@@ -3,7 +3,7 @@
 
         <div class="panel-body post">
 
-            <h4 class="post-name">{{ post.name }}</h4>
+            <h4 class="post-name">{{ post.username }}</h4>
 
             <p class="post-message">{{ post.message }}</p>
 
@@ -11,7 +11,7 @@
                 <h5 class="post-date">{{ post.date }}</h5>
             </div>
 
-            <div class="pull-right">
+            <div class="pull-right"><!-- Need to only display if post.username == signed in user -->
                 <a href="#/editPost.html/{{ post._id }}"><button class="btn btn-default hover-warning">EDIT</button></a>
                 <button ng-click="handleDelete(post._id)" class="btn btn-default hover-danger">DELETE</button>
  

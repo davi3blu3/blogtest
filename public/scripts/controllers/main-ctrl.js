@@ -1,9 +1,9 @@
 angular.module('myApp')
-    .controller('MainController', function MainController($scope, $http, $window, $location){
+    .controller('MainController', function MainController($scope, $http){
 
     $scope.loadData = function() {
         // Send GET request for all posts, send to view scope
-        $http.get('/posts').then(function(response) {
+        $http.get('/sitv/posts').then(function(response) {
             $scope.posts = response.data;
 
             // add readable date to post objects
@@ -34,7 +34,7 @@ angular.module('myApp')
     $scope.handleDelete = function(postID) {
         
         // Send DELETE request for specified post
-        $http.delete('/posts/' + postID).then(function(response){
+        $http.delete('/sitv/posts/' + postID).then(function(response){
             console.log(response.status);
 
             // remove deleted row from view

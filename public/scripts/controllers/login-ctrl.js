@@ -11,7 +11,7 @@ angular.module('myApp')
 
         console.log('returning user:', user);
         // post request
-        $http.post('/loginuser', user)
+        $http.post('/sitv/loginuser', user)
             .then(function(response) {
                 console.log(response);
         })
