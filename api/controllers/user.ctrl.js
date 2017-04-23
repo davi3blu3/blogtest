@@ -16,7 +16,7 @@ module.exports.register = function(req, res){
             res.status(400).json(err);
         } else {
             console.log('user created');
-            res.status(201).json(newUser);
+            res.status(201).json(user);
         }
     })
 }
