@@ -27,7 +27,7 @@ module.exports.insertNewPost = function(req, res){
 
     var newPost = {
         "message": req.body.message,
-        "username": req.body.name,
+        "username": req.user,
         "createdOn": new Date()
     };
     console.log(newPost);

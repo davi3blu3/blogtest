@@ -49,6 +49,7 @@ module.exports.authenticate = function(req, res, next){
                 res.status(401).json('Unauthorized');
             } else {
                 req.user = decoded.username;
+                console.log(req.user, 'was authenticated!');
                 next();
             }
         })
