@@ -1,5 +1,5 @@
 angular.module('myApp')
-    .controller('MainController', function MainController($scope, $http, $window, $location){
+    .controller('MainController', function MainController($scope, $http){
 
     $scope.loadData = function() {
         // Send GET request for all posts, send to view scope
