@@ -7,13 +7,16 @@ var ctrlUsers = require('../controllers/user.ctrl.js');
 router
     .route('/posts')
     .get(ctrlPosts.postsGetAll)                                 // get all posts
-    .post(ctrlUsers.authenticate, ctrlPosts.insertNewPost);     // submit new post, requires auth
+    .post(ctrlPosts.insertNewPost);     // submit new post, requires auth
 
 router
     .route('/posts/:postId')
     .get(ctrlPosts.getOnePost)                                  // get one post
-    .put(ctrlUsers.authenticate, ctrlPosts.updateOnePost)       // update one post, requires auth
-    .delete(ctrlUsers.authenticate, ctrlPosts.deleteOnePost);   // delete one post, requires auth
+    .put(ctrlPosts.updateOnePost)       // update one post, requires auth
+    .delete(ctrlPosts.deleteOnePost);   // delete one post, requires auth
+// add ctrlUsers.authenticate, to route once you're passing JWT
+
+
 
 // User routes - Authentication
 router

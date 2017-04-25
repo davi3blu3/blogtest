@@ -28,4 +28,7 @@ angular.module('myApp', ['ngRoute'])
         templateUrl: '../templates/deletePost.html',
         controller: 'MainController'
     })
+    .otherwise({
+        redirectTo: '/'
+    })
 })
