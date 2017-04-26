@@ -1,4 +1,4 @@
-angular.model('myApp')
+angular.module('myApp')
     .factory('AuthFactory', function($){
         
         return {
