@@ -1,12 +1,13 @@
 angular.module('myApp')
     .factory('AuthFactory', function(){
-        
+
+        // var auth = {
+            
+        // };     
         return {
-            auth: auth
+            isLoggedIn: false
         }
 
-        var auth = {
-            isLoggedIn: false
-        };
+
 
     })
