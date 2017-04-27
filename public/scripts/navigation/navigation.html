@@ -6,12 +6,12 @@
 
         <div class="nav navbar-nav navbar-right button-top-marg">
             <!-- should be visible when unauthenticated -->
-            <a href="#/register"><button class="btn btn-default hover-primary" ng-if="!isLoggedIn()">REGISTER</button></a>
-            <a href="#/login"><button class="btn btn-default hover-primary"ng-if="!isLoggedIn()">LOG IN</button></a>
+            <a href="#/register"><button class="btn btn-default hover-primary">REGISTER</button></a>
+            <a href="#/login"><button class="btn btn-default hover-primary">LOG IN</button></a>
 
             <!-- should only be visible when authenticated -->
-            <a href="#/newPost"><button class="btn btn-default hover-primary" ng-if="isLoggedIn()">NEW POST</button></a>
-            <a href="#"><button class="btn btn-default hover-primary" ng-if="isLoggedIn()">LOG OUT</button></a>
+            <a href="#/newPost"><button class="btn btn-default hover-primary">NEW POST</button></a>
+            <a href="#"><button class="btn btn-default hover-primary">LOG OUT</button></a>
         </div>
 
     </div>

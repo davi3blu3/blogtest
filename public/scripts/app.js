@@ -1,7 +1,7 @@
 angular.module('myApp', ['ngRoute']).config(config).run(run);
 
 function config($httpProvider, $routeProvider){
-    $httpProvider.interceptors.push('AuthInterceptor');
+    // $httpProvider.interceptors.push('AuthInterceptor');
 
     $routeProvider
     .when('/', {

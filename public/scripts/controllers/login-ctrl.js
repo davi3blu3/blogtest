@@ -1,5 +1,7 @@
 angular.module('myApp')
-    .controller('LoginController', function LoginController($scope, $http, $location, $window, AuthFactory){
+    .controller('LoginController', LoginController);
+    
+function LoginController($scope, $http, $location, $window, AuthFactory){
 
     $scope.checkIsLoggedIn = function() {
         if (AuthFactory.isLoggedIn) {
@@ -24,9 +26,9 @@ angular.module('myApp')
                         $window.sessionStorage.token = response.data.token;
                         AuthFactory.isLoggedIn = true;
                     }
-            }).catch(function(error)){
+            }).catch(function(error){
                 console.log(error);
-            }
+            })
 
             // clear form
             $scope.loginUsername = '';
@@ -34,12 +36,10 @@ angular.module('myApp')
         }
     }
 
-
-
     $scope.logout = function() {
         // handle logout
         AuthFactory.isLoggedIn = false;
         delete $window.sessionStorage.token;
         $location.path('/');
     }
-});
+};

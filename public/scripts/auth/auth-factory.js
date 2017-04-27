@@ -1,5 +1,5 @@
 angular.module('myApp')
-    .factory('AuthFactory', function($){
+    .factory('AuthFactory', function(){
         
         return {
             auth: auth
