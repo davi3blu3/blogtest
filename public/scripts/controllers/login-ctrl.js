@@ -1,23 +1,38 @@
 angular.module('myApp')
-    .controller('LoginController', function LoginController($scope, $http){
+    .controller('LoginController', LoginController);
+    
+function LoginController($scope, $http, $location, $window, AuthFactory){
+
+    $scope.checkIsLoggedIn = function() {
+        if (AuthFactory.isLoggedIn) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     $scope.login = function(){
 
-        //create user object
-        var user = {
-            username: $scope.loginUsername,
-            password: $scope.loginPassword
-        };
+        if ($scope.loginUsername && $scope.loginPassword){
+            //create user object
+            var user = {
+                username: $scope.loginUsername,
+                password: $scope.loginPassword
+            };
+            // post request
+            $http.post('/sitv/loginuser', user)
+                .then(function(response) {
+                    if (response.data.success){
+                        $window.sessionStorage.token = response.data.token;
+                        AuthFactory.isLoggedIn = true;
+                    }
+            }).catch(function(error){
+                console.log(error);
+            })
 
-        console.log('returning user:', user);
-        // post request
-        $http.post('/sitv/loginuser', user)
-            .then(function(response) {
-                console.log(response);
-        })
-
-        // clear form
-        $scope.loginUsername = '';
-        $scope.loginPassword = '';
+            // clear form
+            $scope.loginUsername = '';
+            $scope.loginPassword = '';
+        }
     }
-});
+};

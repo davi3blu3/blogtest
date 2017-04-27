@@ -8,31 +8,10 @@
 </head>
 <body>
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <a href="#/" class="navbar-brand">Shout Into The Void</a>
-        </div>
 
-        <div class="nav navbar-nav navbar-right button-top-marg">
-            <!-- should be visible when unauthenticated -->
-            <a href="#/register"><button class="btn btn-default hover-primary">REGISTER</button></a>
-            <a href="#/login"><button class="btn btn-default hover-primary">LOG IN</button></a>
-
-            <!-- should only be visible when authenticated -->
-            <a href="#/newPost"><button class="btn btn-default hover-primary">NEW POST</button></a>
-            <a href="#"><button class="btn btn-default hover-primary">LOG OUT</button></a>
-        </div>
-
-    </div>
-</nav>
-
-<!--<section class="spacer"></section>-->
-
+<sitv-Nav></sitv-Nav>
 
 <ng-view></ng-view>
-
-
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js" type="text/javascript"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.min.js" type="text/javascript"></script>
@@ -44,6 +23,10 @@
 <script src="scripts/controllers/register-ctrl.js" type="text/javascript"></script>
 <script src="scripts/controllers/login-ctrl.js" type="text/javascript"></script>
 <script src="scripts/controllers/post-ctrl.js" type="text/javascript"></script>
+
+<script src="scripts/auth/auth-factory.js" type="text/javascript"></script>
+<script src="scripts/auth/auth-factory.js" type="text/javascript"></script>
+<script src="scripts/navigation/navigation.js" type="text/javascript"></script>
 
 
 </script>

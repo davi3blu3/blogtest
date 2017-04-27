@@ -3,23 +3,34 @@
     <div class="post action-panel">
 
         <h3><strong>Register</strong></h3>
+        <div ng-if="message" class="alert alert-success" role="alert">
+            <p>{{ message }}</p>   
+        </div>
+        <div ng-if="error" class="alert alert-danger" role="alert">
+            <p>{{ error }}</p>   
+        </div>
 
-        <form ng-submit="register()" name="regForm" class="clearfix">
+        <form ng-hide="message" ng-submit="register()" name="regForm" class="clearfix">
             <div class="form-group">
                 <label class="control-label" for="input-name">Create a Username</label>
                 <input class="form-control"
                        type="text"
                        ng-model="regUsername"
-                       placeholder="Username"
-                       required>
+                       placeholder="Username">
             </div>
             <div class="form-group">
                 <label class="control-label" for="input-message">Create a Password</label>
                 <input class="form-control"
                        type="text"
                        ng-model="regPassword"
-                       placeholder="Password"
-                       required>
+                       placeholder="Password">
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="input-message">Type Password Again</label>
+                <input class="form-control"
+                       type="text"
+                       ng-model="regPasswordRepeat"
+                       placeholder="Repeat Password">
             </div>
             <button type="submit" value="Submit" class="btn btn-primary pull-right">Submit</button>
         </form>
