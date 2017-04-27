@@ -35,11 +35,4 @@ function LoginController($scope, $http, $location, $window, AuthFactory){
             $scope.loginPassword = '';
         }
     }
-
-    $scope.logout = function() {
-        // handle logout
-        AuthFactory.isLoggedIn = false;
-        delete $window.sessionStorage.token;
-        $location.path('/');
-    }
 };
