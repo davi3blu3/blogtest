@@ -29,7 +29,6 @@ function LoginController($scope, $http, $location, $window, AuthFactory){
             }).catch(function(error){
                 console.log(error);
             })
-
             // clear form
             $scope.loginUsername = '';
             $scope.loginPassword = '';
