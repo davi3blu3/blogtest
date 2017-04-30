@@ -13,8 +13,12 @@ function sitvNav(){
             },
             $scope.logout = function() {
                 AuthFactory.isLoggedIn = false;
+                AuthFactory.activeUser = null;
                 delete $window.sessionStorage.token;
                 $location.path('/');
+            },
+            $scope.activeUser = function() {
+                return AuthFactory.activeUser;
             }
         },
         templateUrl: 'scripts/navigation/navigation.html'
