@@ -10,7 +10,7 @@
   "author": "davi3blu3",
   "license": "ISC",
   "dependencies": {
-    "angular": "^1.6.4",
+    "angular": "^1.5.7",
     "angular-route": "^1.5.7",
     "angular-sanitize": "^1.5.7",
     "body-parser": "^1.16.1",

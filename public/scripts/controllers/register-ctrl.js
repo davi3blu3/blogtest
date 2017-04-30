@@ -1,4 +1,4 @@
-angular.module('myApp')
+angular.module('myApp', ['ngSanitize'])
     .controller('RegisterController', function RegisterController($scope, $http){
 
     $scope.error = undefined;
