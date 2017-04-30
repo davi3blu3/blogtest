@@ -19,6 +19,10 @@ function LoginController($scope, $http, $location, $window, AuthFactory){
         if (!$scope.loginUsername || !$scope.loginPassword){
             $scope.error = "Please enter your username and password";
         } else {
+            console.log('both username and password exists?');
+            console.log('username: ', $scope.loginUsername);
+            console.log('password: ', $scope.loginPassword);
+
             //create user object
             var user = {
                 username: $scope.loginUsername,
