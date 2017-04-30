@@ -25,6 +25,8 @@ function LoginController($scope, $http, $location, $window, AuthFactory){
                     if (response.data.success){
                         $window.sessionStorage.token = response.data.token;
                         AuthFactory.isLoggedIn = true;
+                        AuthFactory.activeUser = user.username;
+                        console.log(AuthFactory.activeUser + ' was logged in successfully');
                     }
             }).catch(function(error){
                 console.log(error);
