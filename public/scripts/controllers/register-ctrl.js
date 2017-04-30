@@ -1,5 +1,5 @@
-angular.module('myApp', ['ngSanitize'])
-    .controller('RegisterController', function RegisterController($scope, $http){
+angular.module('myApp')
+    .controller('RegisterController', function RegisterController($scope, $http, $sanitize){
 
     $scope.error = undefined;
     $scope.message = undefined;
@@ -30,7 +30,7 @@ angular.module('myApp', ['ngSanitize'])
                 // clear form
                 $scope.regUsername = '';
                 $scope.regPassword = '';
-
+                $scope.regPasswordRepeat = '';
 
             }
         }
