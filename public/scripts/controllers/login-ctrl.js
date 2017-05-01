@@ -1,7 +1,7 @@
 angular.module('myApp')
     .controller('LoginController', LoginController);
     
-function LoginController($scope, $http, $location, $window, AuthFactory){
+function LoginController($scope, $http, $location, $window, $timeout, AuthFactory){
 
     $scope.error = undefined;
     $scope.message = undefined;
@@ -35,9 +35,12 @@ function LoginController($scope, $http, $location, $window, AuthFactory){
                         $window.sessionStorage.token = response.data.token;
                         AuthFactory.isLoggedIn = true;
                         AuthFactory.activeUser = user.username;
-                        console.log(AuthFactory.activeUser + ' was logged in successfully');
-                        $scope.message = "You have logged in successfully!";
+                        $scope.message = "You have logged in successfully! Just a moment ...";
                         $scope.error = undefined;
+                        $timeout(function(){
+                            console.log('timeout called');
+                            $location.url('/');
+                        }, 1200);
                     }
             }).catch(function(error){
                 console.log(error);
