@@ -23,7 +23,7 @@ angular.module('myApp')
                 $http.post('/sitv/newuser', user)
                     .then(function(response) {
                         console.log(response);
-                        $scope.message = "Registered successfully! Please <a href='#'>login</a>.";
+                        $scope.message = "Registered successfully! Please <a href='#/login'>login</a>.";
                         $scope.error = undefined;
                 })
 
