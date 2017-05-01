@@ -9,7 +9,6 @@ angular.module('myApp')
             username: AuthFactory.activeUser,
             message: $scope.postData.message
         };
-        console.log(newPost);
 
         // send POST request with new post
 

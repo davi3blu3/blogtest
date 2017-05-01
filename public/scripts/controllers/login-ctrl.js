@@ -19,10 +19,6 @@ function LoginController($scope, $http, $location, $window, $timeout, AuthFactor
         if (!$scope.loginUsername || !$scope.loginPassword){
             $scope.error = "Please enter your username and password";
         } else {
-            console.log('both username and password exists?');
-            console.log('username: ', $scope.loginUsername);
-            console.log('password: ', $scope.loginPassword);
-
             //create user object
             var user = {
                 username: $scope.loginUsername,
@@ -38,9 +34,8 @@ function LoginController($scope, $http, $location, $window, $timeout, AuthFactor
                         $scope.message = "You have logged in successfully! Just a moment ...";
                         $scope.error = undefined;
                         $timeout(function(){
-                            console.log('timeout called');
                             $location.url('/');
-                        }, 1200);
+                        }, 1500);
                     }
             }).catch(function(error){
                 console.log(error);
