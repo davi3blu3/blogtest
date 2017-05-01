@@ -24,10 +24,11 @@ module.exports.postsGetAll = function(req, res){
 // POST /posts - write a new post to database
 module.exports.insertNewPost = function(req, res){
     console.log('insertNewPost called');
+    console.log(req.user);
 
     var newPost = {
         "message": req.body.message,
-        "username": req.user,
+        "username": req.body.username,
         "createdOn": new Date()
     };
     console.log(newPost);

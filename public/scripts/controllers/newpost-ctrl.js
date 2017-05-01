@@ -1,12 +1,18 @@
 angular.module('myApp')
-    .controller('PostController', function PostController($scope, $http, $location){
+    .controller('PostController', function PostController($scope, $http, $location, AuthFactory){
 
     // handles new post Submit event
     $scope.submit = function() {
-        // console.log($scope.postData);
-        console.log('post page submit was called');
+
+        // construct newPost object
+        var newPost = {
+            username: AuthFactory.activeUser,
+            message: $scope.postData.message
+        };
+
         // send POST request with new post
-        $http.post('/sitv/posts', $scope.postData).then(function(response){
+
+        $http.post('/sitv/posts', newPost).then(function(response){
 
             // reload data on success, clear form, return to feed
             if (response.status > 199 && response.status < 300) {           

@@ -1,7 +1,10 @@
 angular.module('myApp')
     .controller('LoginController', LoginController);
     
-function LoginController($scope, $http, $location, $window, AuthFactory){
+function LoginController($scope, $http, $location, $window, $timeout, AuthFactory){
+
+    $scope.error = undefined;
+    $scope.message = undefined;
 
     $scope.checkIsLoggedIn = function() {
         if (AuthFactory.isLoggedIn) {
@@ -13,7 +16,9 @@ function LoginController($scope, $http, $location, $window, AuthFactory){
 
     $scope.login = function(){
 
-        if ($scope.loginUsername && $scope.loginPassword){
+        if (!$scope.loginUsername || !$scope.loginPassword){
+            $scope.error = "Please enter your username and password";
+        } else {
             //create user object
             var user = {
                 username: $scope.loginUsername,
@@ -25,9 +30,16 @@ function LoginController($scope, $http, $location, $window, AuthFactory){
                     if (response.data.success){
                         $window.sessionStorage.token = response.data.token;
                         AuthFactory.isLoggedIn = true;
+                        AuthFactory.activeUser = user.username;
+                        $scope.message = "You have logged in successfully! Just a moment ...";
+                        $scope.error = undefined;
+                        $timeout(function(){
+                            $location.url('/');
+                        }, 1500);
                     }
             }).catch(function(error){
                 console.log(error);
+                $scope.error = "Your account could not be authenticated. Please try again.";
             })
             // clear form
             $scope.loginUsername = '';

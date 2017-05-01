@@ -10,6 +10,7 @@
             <a href="#/login"><button class="btn btn-default hover-primary" ng-if="!isLoggedIn()">LOG IN</button></a>
 
             <!-- should only be visible when authenticated -->
+            <button ng-if="isLoggedIn()" class="btn btn-default btn-primary">{{ activeUser() }}</button>
             <a href="#/newPost"><button class="btn btn-default hover-primary" ng-if="isLoggedIn()">NEW POST</button></a>
             <button class="btn btn-default hover-primary" ng-click="logout()" ng-if="isLoggedIn()">LOG OUT</button>
         </div>
