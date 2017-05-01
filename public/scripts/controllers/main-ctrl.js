@@ -1,5 +1,5 @@
 angular.module('myApp')
-    .controller('MainController', function MainController($scope, $http){
+    .controller('MainController', function MainController($scope, $http, AuthFactory){
 
     $scope.loadData = function() {
         // Send GET request for all posts, send to view scope
@@ -45,5 +45,11 @@ angular.module('myApp')
                 }
             }
         })
+    }
+
+    // control edit/delete buttons visiblity - only to post author
+    $scope.isAuthor = function(user) {
+        if (user == AuthFactory.activeUser) return true;
+        return false;
     }
 });
