@@ -1,5 +1,6 @@
-angular.model('myApp')
-    .factory('AuthInterceptor', function($location, $q, $window, AuthFactory){
+angular.model('myApp').factory('AuthInterceptor', AuthInterceptor);
+
+function AuthInterceptor($location, $q, $window, AuthFactory){
 
         return {
             request: request,

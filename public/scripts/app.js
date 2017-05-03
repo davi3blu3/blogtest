@@ -2,7 +2,6 @@ angular.module('myApp', ['ngRoute', 'ngSanitize']).config(config).run(run);
 
 function config($httpProvider, $routeProvider){
     // $httpProvider.interceptors.push('AuthInterceptor');
-    console.log('Angular main app.js LOADED');
 
     $routeProvider
     .when('/', {
