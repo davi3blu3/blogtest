@@ -24,6 +24,9 @@ module.exports.login = function(req, res){
         if (err) {
             console.log(err);
             res.status(400).json(err);
+        } else if (!user) {
+            console.log('User = ', user);
+            res.status(404).json('Username Not Found');
         } else {
             if (bcrypt.compareSync(req.body.password, user.password)) {
                 var token = jwt.sign(

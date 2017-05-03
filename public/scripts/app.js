@@ -1,8 +1,7 @@
 angular.module('myApp', ['ngRoute', 'ngSanitize']).config(config).run(run);
 
 function config($httpProvider, $routeProvider){
-    // $httpProvider.interceptors.push('AuthInterceptor');
-    console.log('Angular main app.js LOADED');
+    $httpProvider.interceptors.push('AuthInterceptor');
 
     $routeProvider
     .when('/', {
@@ -56,6 +55,7 @@ function run($rootScope, $location, $window, AuthFactory) {
     $rootScope.$on('$routeChangeStart', function(event, nextRoute, currentRoute) {
         if (nextRoute.access !== undefined && nextRoute.access.restricted && !$window.sessionStorage.token && !AuthFactory.isLoggedIn) {
             event.preventDefault();
+            console.log('auth Intercepted! Rerouting to /');
             $location.path('/');
         }
     })

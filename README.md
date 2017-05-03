@@ -4,6 +4,10 @@
 
 This is a social microblog contructed with the MEAN stack - MongoDB, Express, Angular, and Node. Like many social platforms, it exists to allow users to gaze into an abyss which also gazes back at them. Shout into the void and listen for echoes.
 
+## Motivation
+
+This project is a vehicle for my experimentation with JSON Web Tokens, and perhaps a guide for anyone looking to get their feet wet with authentication.
+
 ## API STRUCTURE
 
 /posts          GET     - retrieve all posts in decending date order
