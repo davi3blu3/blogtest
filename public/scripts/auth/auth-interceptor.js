@@ -1,7 +1,6 @@
-angular.model('myApp').factory('AuthInterceptor', AuthInterceptor);
+angular.module('myApp').factory('AuthInterceptor', AuthInterceptor);
 
-function AuthInterceptor($location, $q, $window, AuthFactory){
-
+function AuthInterceptor($location, $q, $window, AuthFactory) {
     return {
         request: request,
         response: response,
@@ -33,5 +32,5 @@ function AuthInterceptor($location, $q, $window, AuthFactory){
             $location.path('/');
         }
         return $q.reject(rejection);
-    }        
+    }
 }
