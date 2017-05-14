@@ -9,7 +9,7 @@ angular.module('myApp')
             username: $scope.regUsername,
             password: $scope.regPassword
         };
-        // basic validation
+        // check form completion
         if (!$scope.regUsername || !$scope.regPassword){
             $scope.error = "Please create a username and a password";
         } else {
@@ -28,6 +28,7 @@ angular.module('myApp')
         }
     }
 
+    // blank out registration form
     clearRegInput = function(){
         $scope.regUsername = '';
         $scope.regPassword = '';

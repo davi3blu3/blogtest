@@ -28,21 +28,18 @@ function LoginController($scope, $http, $location, $window, $timeout, AuthFactor
             $http.post('/sitv/loginuser', user)
                 .then(function(response) {
                     if (response.data.success){
-                        console.log(response);
-                        $window.sessionStorage.token = response.data.token;
                         AuthFactory.isLoggedIn = true;
-                        AuthFactory.activeUser = user.username;
+                        $window.localStorage.token = response.data.token;
+                        $window.localStorage.activeUser = user.username;
                         $scope.message = "You have logged in successfully! Just a moment ...";
                         $scope.error = undefined;
                         $timeout(function(){
                             $location.url('/');
                         }, 1500);
                     } else {
-                        console.log(response);
                         $scope.error = "Your account could not be authenticated. Please try again.";
                     }
             }).catch(function(error){
-                console.log(error);
                 $scope.error = "Your account could not be authenticated. Please try again.";
             })
             // clear form
