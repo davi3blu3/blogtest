@@ -2,8 +2,7 @@ angular.module('myApp').factory('AuthFactory', AuthFactory);
 
 function AuthFactory(){
     var auth = {
-        isLoggedIn: false,
-        activeUser: null
+        isLoggedIn: false
     }
     return {
         auth: auth

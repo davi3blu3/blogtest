@@ -13,7 +13,6 @@ function sitvNav(){
             },
             $scope.logout = function() {
                 AuthFactory.isLoggedIn = false;
-                // AuthFactory.activeUser = null;
                 delete $window.localStorage.token;
                 delete $window.localStorage.activeUser;
                 $location.path('/');
