@@ -9,14 +9,14 @@ function AuthInterceptor($location, $q, $window, AuthFactory) {
 
     function request(config){
         config.headers = config.headers || {};
-        if ($window.sessionStorage.token) {
-            config.headers.Authorization = 'Bearer ' + $window.sessionStorage.token;
+        if ($window.localStorage.token) {
+            config.headers.Authorization = 'Bearer ' + $window.localStorage.token;
         }
         return config;
     }
 
     function response(response){
-        if (response.status === 200 && $window.sessionStorage.token && !AuthFactory.isLoggedIn){
+        if (response.status === 200 && $window.localStorage.token && !AuthFactory.isLoggedIn){
             AuthFactory.isLoggedIn = true;
         }
         if (response.status === 401) {
@@ -27,7 +27,7 @@ function AuthInterceptor($location, $q, $window, AuthFactory) {
 
     function responseError(rejection){
         if (rejection.status === 401 || rejection.status === 403) {
-            delete $window.sessionStorage.token;
+            delete $window.localStorage.token;
             AuthFactory.isLoggedIn = false;
             $location.path('/');
         }

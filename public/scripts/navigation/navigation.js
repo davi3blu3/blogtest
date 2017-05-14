@@ -14,7 +14,7 @@ function sitvNav(){
             $scope.logout = function() {
                 AuthFactory.isLoggedIn = false;
                 AuthFactory.activeUser = null;
-                delete $window.sessionStorage.token;
+                delete $window.localStorage.token;
                 $location.path('/');
             },
             $scope.activeUser = function() {
