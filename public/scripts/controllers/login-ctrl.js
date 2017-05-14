@@ -29,9 +29,10 @@ function LoginController($scope, $http, $location, $window, $timeout, AuthFactor
                 .then(function(response) {
                     if (response.data.success){
                         console.log(response);
-                        $window.localStorage.token = response.data.token;
                         AuthFactory.isLoggedIn = true;
-                        AuthFactory.activeUser = user.username;
+                        // AuthFactory.activeUser = user.username;
+                        $window.localStorage.token = response.data.token;
+                        $window.localStorage.activeUser = user.username;
                         $scope.message = "You have logged in successfully! Just a moment ...";
                         $scope.error = undefined;
                         $timeout(function(){
