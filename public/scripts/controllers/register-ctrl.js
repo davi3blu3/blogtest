@@ -28,6 +28,7 @@ angular.module('myApp')
         }
     }
 
+    // blank out registration form
     clearRegInput = function(){
         $scope.regUsername = '';
         $scope.regPassword = '';

@@ -8,6 +8,7 @@ function AuthInterceptor($location, $q, $window, AuthFactory) {
     };
 
     function request(config){
+        // check request headers for JWT
         config.headers = config.headers || {};
         if ($window.localStorage.token) {
             config.headers.Authorization = 'Bearer ' + $window.localStorage.token;
@@ -16,6 +17,7 @@ function AuthInterceptor($location, $q, $window, AuthFactory) {
     }
 
     function response(response){
+        // permit login if JWT checks out and not already logged in
         if (response.status === 200 && $window.localStorage.token && !AuthFactory.isLoggedIn){
             AuthFactory.isLoggedIn = true;
         }
@@ -26,6 +28,7 @@ function AuthInterceptor($location, $q, $window, AuthFactory) {
     }
 
     function responseError(rejection){
+        // handle JWT not accepted
         if (rejection.status === 401 || rejection.status === 403) {
             delete $window.localStorage.token;
             AuthFactory.isLoggedIn = false;
