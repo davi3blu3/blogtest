@@ -13,9 +13,11 @@
     "angular": "^1.5.7",
     "angular-route": "^1.5.7",
     "angular-sanitize": "^1.5.7",
+    "angular-ui-router": "^1.0.3",
     "body-parser": "^1.16.1",
     "express": "^4.14.1",
     "jsonwebtoken": "^7.3.0",
-    "mongodb": "^2.2.24"
+    "mongodb": "^2.2.24",
+    "ui-router": "^1.0.0-alpha.3"
   }
 }

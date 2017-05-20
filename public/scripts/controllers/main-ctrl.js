@@ -37,4 +37,6 @@ angular.module('myApp')
         if (user == $window.localStorage.activeUser) return true;
         return false;
     }
+
+    return $scope;
 });
