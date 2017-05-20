@@ -15,6 +15,11 @@ function config($httpProvider, $routeProvider, $stateProvider, $urlRouterProvide
             url: '/register',
             templateUrl: 'templates/register.html',
             controller: 'RegisterController'
+        })
+        .state('login', {
+            url: '/login',
+            templateUrl: 'templates/login.html',
+            controller: 'LoginController'          
         });
 
     $urlRouterProvider.otherwise('/');
