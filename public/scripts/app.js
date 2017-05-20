@@ -20,6 +20,11 @@ function config($httpProvider, $routeProvider, $stateProvider, $urlRouterProvide
             url: '/login',
             templateUrl: 'templates/login.html',
             controller: 'LoginController'          
+        })
+        .state('newpost', {
+            url: '/newPost',
+            templateUrl: 'templates/newPost.html',
+            controller: 'PostController'            
         });
 
     $urlRouterProvider.otherwise('/');
@@ -49,20 +54,6 @@ function config($httpProvider, $routeProvider, $stateProvider, $urlRouterProvide
     // .when('/newPost', {
     //     templateUrl: '../templates/newPost.html',
     //     controller: 'PostController',
-    //     access: {
-    //         restricted: true
-    //     }
-    // })
-    // .when('/editPost/', {
-    //     templateUrl: '../templates/editPost.html',
-    //     controller: 'EditController',
-    //     access: {
-    //         restricted: true
-    //     }
-    // })
-    // .when('/deletePost', {
-    //     templateUrl: '../templates/deletePost.html',
-    //     controller: 'MainController',
     //     access: {
     //         restricted: true
     //     }
