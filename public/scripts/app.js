@@ -1,7 +1,8 @@
-angular.module('myApp', ['ngRoute', 'ngSanitize', 'ui.router']).config(config).run(run);
+myApp = angular.module('myApp', ['ngRoute', 'ngSanitize', 'ui.router'])
+//.config(config).run(run);
 
-function config($httpProvider, $routeProvider, $stateProvider, $urlRouterProvider){
-    $httpProvider.interceptors.push('AuthInterceptor');
+myApp.config(function ($httpProvider, $routeProvider, $stateProvider, $urlRouterProvider){
+    // $httpProvider.interceptors.push('AuthInterceptor');
 
     $stateProvider
         .state('mainfeed', {
@@ -38,13 +39,27 @@ function config($httpProvider, $routeProvider, $stateProvider, $urlRouterProvide
         });
 
     $urlRouterProvider.otherwise('/');
-}
+});
 
-function run($rootScope, $location, $window, AuthFactory) {
-    $rootScope.$on('$routeChangeStart', function(event, nextRoute, currentRoute) {
-        if (nextRoute.access !== undefined && nextRoute.access.restricted && !$window.localStorage.token && !AuthFactory.isLoggedIn) {
+myApp.run(function ($rootScope, $state, $transitions, $location, $window, AuthFactory) {
+    // $rootScope.$on('$stateChangeStart', function(event) {
+    //     console.log('state change detected');
+        // if (nextRoute.access !== undefined && nextRoute.access.restricted && !$window.localStorage.token && !AuthFactory.isLoggedIn) {
+        //     event.preventDefault();
+        //     $location.path('/');
+        // }
+    // })
+
+    $transitions.onStart( {}, function(trans){
+        // console.log('from state: ' + trans.$from().name);        
+        // console.log('to state:   ' + trans.$to().name);
+        var nextState = trans.$to().self;
+        console.log('token: ' + $window.localStorage.token);
+        console.log('logged In: ' + !AuthFactory.isLoggedIn);
+        if (nextState.access.restricted && !$window.localStorage.token && !AuthFactory.isLoggedIn) {
             event.preventDefault();
             $location.path('/');
+            console.log('state change rejected?');
         }
-    })
-}
+    });
+});
