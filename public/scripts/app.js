@@ -10,11 +10,11 @@ function config($httpProvider, $routeProvider, $stateProvider, $urlRouterProvide
             url: '/',
             templateUrl: 'templates/feed.html',
             controller: 'MainController',
-            resolve: {
-                mainfeed: function(){
-                    console.log('mainfeed state called');
-                }
-            }
+        })
+        .state('register', {
+            url: '/register',
+            templateUrl: 'templates/register.html',
+            controller: 'RegisterController'
         });
 
     $urlRouterProvider.otherwise('/');

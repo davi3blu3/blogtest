@@ -1,8 +1,6 @@
 angular.module('myApp')
     .controller('MainController', function MainController($scope, $http, $window, AuthFactory){
 
-    console.log('MainController called');
-
     $scope.loadData = function() {
         // Send GET request for all posts, send to view scope
         $http.get('/sitv/posts').then(function(response) {
