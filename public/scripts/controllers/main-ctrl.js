@@ -1,6 +1,8 @@
 angular.module('myApp')
     .controller('MainController', function MainController($scope, $http, $window, AuthFactory){
 
+    console.log('MainController called');
+
     $scope.loadData = function() {
         // Send GET request for all posts, send to view scope
         $http.get('/sitv/posts').then(function(response) {
@@ -37,4 +39,6 @@ angular.module('myApp')
         if (user == $window.localStorage.activeUser) return true;
         return false;
     }
+
+    return $scope;
 });
