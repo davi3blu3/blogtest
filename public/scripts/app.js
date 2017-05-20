@@ -38,39 +38,6 @@ function config($httpProvider, $routeProvider, $stateProvider, $urlRouterProvide
         });
 
     $urlRouterProvider.otherwise('/');
-
-    // $routeProvider
-    // .when('/', {
-    //     templateUrl: '../templates/feed.html',
-    //     controller: 'MainController',
-    //     access: {
-    //         restricted: false
-    //     }
-    // })
-    // .when('/register', {
-    //     templateUrl: '../templates/register.html',
-    //     controller: 'RegisterController',
-    //     access: {
-    //         restricted: false
-    //     }
-    // })
-    // .when('/login', {
-    //     templateUrl: '../templates/login.html',
-    //     controller: 'LoginController',
-    //     access: {
-    //         restricted: false
-    //     }
-    // })
-    // .when('/newPost', {
-    //     templateUrl: '../templates/newPost.html',
-    //     controller: 'PostController',
-    //     access: {
-    //         restricted: true
-    //     }
-    // })
-    // .otherwise({
-    //     redirectTo: '/'
-    // })
 }
 
 function run($rootScope, $location, $window, AuthFactory) {
