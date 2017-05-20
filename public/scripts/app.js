@@ -1,7 +1,19 @@
-angular.module('myApp', ['ngRoute', 'ngSanitize']).config(config).run(run);
+angular.module('myApp', ['ngRoute', 'ngSanitize', 'ui.router']).config(config).run(run);
 
-function config($httpProvider, $routeProvider){
+function config($httpProvider, $routeProvider, $stateProvider, $urlRouterProvider){
     $httpProvider.interceptors.push('AuthInterceptor');
+
+    // $stateProvider
+    //     .state('/', {
+    //         url: '/',
+    //         templateUrl: 'templates/feed.html',
+    //         resolve: {
+    //             films: function() {
+    //                 console.log('stateProvider called');
+    //                 return;
+    //             }
+    //         } 
+    //     });
 
     $routeProvider
     .when('/', {
