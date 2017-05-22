@@ -55,11 +55,16 @@ myApp.run(function ($rootScope, $state, $transitions, $location, $window, AuthFa
         // console.log('to state:   ' + trans.$to().name);
         var nextState = trans.$to().self;
         console.log('token: ' + $window.localStorage.token);
-        console.log('logged In: ' + !AuthFactory.isLoggedIn);
-        if (nextState.access.restricted && !$window.localStorage.token && !AuthFactory.isLoggedIn) {
+        console.log('logged in: ' + AuthFactory.auth.isLoggedIn);
+        // if (nextState.access.restricted && !$window.localStorage.token && !AuthFactory.isLoggedIn) {
+        //     event.preventDefault();
+        //     $location.path('/');
+        //     console.log('state change rejected?');
+        // }
+        if (nextState.access.restricted) {
+            console.log('entering restricted zone');
             event.preventDefault();
             $location.path('/');
-            console.log('state change rejected?');
         }
     });
 });
