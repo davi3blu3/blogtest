@@ -43,23 +43,12 @@ myApp.config(function ($httpProvider, $routeProvider, $stateProvider, $urlRouter
 
 myApp.run(function ($rootScope, $state, $transitions, $location, $window, AuthFactory) {
 
-
     $transitions.onStart( {}, function(trans){
-        // console.log('from state: ' + trans.$from().name);        
-        // console.log('to state:   ' + trans.$to().name);
         var nextState = trans.$to().self;
-        console.log('token: ' + $window.localStorage.token);
-        console.log('logged in: ' + AuthFactory.auth.isLoggedIn);
-        console.log(AuthFactory.auth.isLoggedIn);
-        // if (nextState.access.restricted && !$window.localStorage.token && !AuthFactory.auth.isLoggedIn) {
-        //     event.preventDefault();
-        //     $location.path('/');
-        //     console.log('state change rejected?');
-        // }
-        if (nextState.access.restricted) {
-            console.log('restricted view');
-            //event.preventDefault();
-            //$location.path('/');
+        if (nextState.access.restricted && !$window.localStorage.token && !AuthFactory.auth.isLoggedIn) {
+            event.preventDefault();
+            $location.path('/');
+            console.log('state change rejected');
         }
     });
 });
