@@ -42,13 +42,7 @@ myApp.config(function ($httpProvider, $routeProvider, $stateProvider, $urlRouter
 });
 
 myApp.run(function ($rootScope, $state, $transitions, $location, $window, AuthFactory) {
-    // $rootScope.$on('$stateChangeStart', function(event) {
-    //     console.log('state change detected');
-        // if (nextRoute.access !== undefined && nextRoute.access.restricted && !$window.localStorage.token && !AuthFactory.isLoggedIn) {
-        //     event.preventDefault();
-        //     $location.path('/');
-        // }
-    // })
+
 
     $transitions.onStart( {}, function(trans){
         // console.log('from state: ' + trans.$from().name);        
@@ -56,15 +50,16 @@ myApp.run(function ($rootScope, $state, $transitions, $location, $window, AuthFa
         var nextState = trans.$to().self;
         console.log('token: ' + $window.localStorage.token);
         console.log('logged in: ' + AuthFactory.auth.isLoggedIn);
-        // if (nextState.access.restricted && !$window.localStorage.token && !AuthFactory.isLoggedIn) {
+        console.log(AuthFactory.auth.isLoggedIn);
+        // if (nextState.access.restricted && !$window.localStorage.token && !AuthFactory.auth.isLoggedIn) {
         //     event.preventDefault();
         //     $location.path('/');
         //     console.log('state change rejected?');
         // }
         if (nextState.access.restricted) {
-            console.log('entering restricted zone');
-            event.preventDefault();
-            $location.path('/');
+            console.log('restricted view');
+            //event.preventDefault();
+            //$location.path('/');
         }
     });
 });
