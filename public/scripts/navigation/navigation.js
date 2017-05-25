@@ -5,14 +5,14 @@ function sitvNav(){
         restrict: 'E',
         controller: function($scope, $window, $location, AuthFactory) {
             $scope.isLoggedIn = function(){
-                if (AuthFactory.isLoggedIn) {
+                if (AuthFactory.auth.isLoggedIn) {
                     return true;
                 } else {
                     return false;
                 }
             },
             $scope.logout = function() {
-                AuthFactory.isLoggedIn = false;
+                AuthFactory.auth.isLoggedIn = false;
                 delete $window.localStorage.token;
                 delete $window.localStorage.activeUser;
                 $location.path('/');

@@ -28,7 +28,7 @@ function LoginController($scope, $http, $location, $window, $timeout, AuthFactor
             $http.post('/sitv/loginuser', user)
                 .then(function(response) {
                     if (response.data.success){
-                        AuthFactory.isLoggedIn = true;
+                        AuthFactory.auth.isLoggedIn = true;
                         $window.localStorage.token = response.data.token;
                         $window.localStorage.activeUser = user.username;
                         $scope.message = "You have logged in successfully! Just a moment ...";

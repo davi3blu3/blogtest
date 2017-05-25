@@ -1,7 +1,8 @@
-angular.module('myApp', ['ngRoute', 'ngSanitize', 'ui.router']).config(config).run(run);
+myApp = angular.module('myApp', ['ngRoute', 'ngSanitize', 'ui.router'])
+//.config(config).run(run);
 
-function config($httpProvider, $routeProvider, $stateProvider, $urlRouterProvider){
-    $httpProvider.interceptors.push('AuthInterceptor');
+myApp.config(function ($httpProvider, $routeProvider, $stateProvider, $urlRouterProvider){
+    // $httpProvider.interceptors.push('AuthInterceptor');
 
     $stateProvider
         .state('mainfeed', {
@@ -38,13 +39,16 @@ function config($httpProvider, $routeProvider, $stateProvider, $urlRouterProvide
         });
 
     $urlRouterProvider.otherwise('/');
-}
+});
 
-function run($rootScope, $location, $window, AuthFactory) {
-    $rootScope.$on('$routeChangeStart', function(event, nextRoute, currentRoute) {
-        if (nextRoute.access !== undefined && nextRoute.access.restricted && !$window.localStorage.token && !AuthFactory.isLoggedIn) {
+myApp.run(function ($rootScope, $state, $transitions, $location, $window, AuthFactory) {
+
+    $transitions.onStart( {}, function(trans){
+        var nextState = trans.$to().self;
+        if (nextState.access.restricted && !$window.localStorage.token && !AuthFactory.auth.isLoggedIn) {
             event.preventDefault();
             $location.path('/');
+            console.log('state change rejected');
         }
-    })
-}
+    });
+});
